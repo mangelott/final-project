@@ -1,8 +1,8 @@
 "use strict";
 
-module.exports = function(email) {
+module.exports = function (username) {
   const Model = this;
-  return Model.findOne({ email })
+  return Model.findOne({ username })
     .then(user => {
       return Promise.resolve(user);
     })

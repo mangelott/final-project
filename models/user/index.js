@@ -3,37 +3,42 @@
 const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
-  email: {
+  username: {
     type: String,
     required: true,
     lowercase: true,
     trim: true,
     unique: true
   },
-  name: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  passwordHash: {
+  password: {
     type: String,
     required: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true
   },
   role: {
     type: String,
     required: true,
-    enum: ["user", "editor", "admin"],
-    default: "user"
+    enum: [
+      "Hospital",
+      "Patient"
+    ]
+  },
+  image: {
+    type: String
   }
 });
 
 const signInStatic = require("./statics/sign-in");
 const signUpStatic = require("./statics/sign-up");
-const findByEmailStatic = require("./statics/find-by-email");
+const findByUsernameStatic = require("./statics/find-by-username");
 
 schema.statics.signIn = signInStatic;
 schema.statics.signUp = signUpStatic;
-schema.statics.findByEmail = findByEmailStatic;
+schema.statics.findByUsername = findByUsernameStatic;
 
 const User = mongoose.model("User", schema);
 
