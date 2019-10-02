@@ -6,20 +6,22 @@ const recipeSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  ingredients: Array,
-  calories: Number,
-  dishType: {
-    type: String,
-    enum: ["Breakfast", "Dish", "Snack", "Drink", "Dessert", "Other"]
-  },
-  steps: { type: [String] },
-  image: {
-    type: String,
-    default: "https://images.media-allrecipes.com/images/75131.jpg"
-  },
-  duration: {
-    type: Number,
-    min: 0
+  body: {
+    picture: {
+      type: String,
+      default: "https://images.media-allrecipes.com/images/75131.jpg"
+    },
+    dishType: {
+      type: String,
+      enum: ["Breakfast", "Dish", "Snack", "Drink", "Dessert", "Other"]
+    },
+    ingredient: Array,
+    direction: { type: [String] },
+    duration: {
+      type: Number,
+      min: 0
+    },
+    calorie: Number
   }
 });
 
