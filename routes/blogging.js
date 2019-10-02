@@ -9,3 +9,5 @@ router.post("/blog/create", bloggingControl.create);
 router.get("/blog", bloggingControl.list);
 router.patch("/blog/:id", bloggingControl.edit);
 router.delete("/blog/:id", bloggingControl.remove);
+
+module.exports = router;
