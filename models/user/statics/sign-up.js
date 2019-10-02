@@ -1,6 +1,6 @@
 "use strict";
 
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const commonPasswordList = require("fxa-common-password-list");
 
 const verifyPasswordStrength = password => {
@@ -13,7 +13,7 @@ const verifyPasswordStrength = password => {
   }
 };
 
-module.exports = function ({ username, password, campus, course }) {
+module.exports = function({ username, password, email }) {
   const Model = this;
 
   return Model.findByUsername(username)
@@ -30,8 +30,7 @@ module.exports = function ({ username, password, campus, course }) {
       return Model.create({
         username,
         password: hash,
-        campus,
-        course
+        email
       });
     })
     .then(user => {

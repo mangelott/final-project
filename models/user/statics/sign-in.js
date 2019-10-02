@@ -1,14 +1,14 @@
 "use strict";
 
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 // Create a sign in static that is going to abstact the authentication functionality
-module.exports = function ({ username, password }) {
+module.exports = function({ email, password }) {
   const Model = this;
 
   let auxiliaryUser;
 
-  return Model.findByUsername(username)
+  return Model.findByEmail(email)
     .then(user => {
       if (!user) {
         throw new Error("USER_NOT_FOUND");

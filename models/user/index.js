@@ -21,11 +21,7 @@ const schema = new mongoose.Schema({
   },
   role: {
     type: String,
-    required: true,
-    enum: [
-      "Hospital",
-      "Patient"
-    ]
+    enum: ["Hospital", "Patient"]
   },
   image: {
     type: String
@@ -34,11 +30,11 @@ const schema = new mongoose.Schema({
 
 const signInStatic = require("./statics/sign-in");
 const signUpStatic = require("./statics/sign-up");
-const findByUsernameStatic = require("./statics/find-by-username");
+const findByEmailStatic = require("./statics/find-by-email");
 
 schema.statics.signIn = signInStatic;
 schema.statics.signUp = signUpStatic;
-schema.statics.findByUsername = findByUsernameStatic;
+schema.statics.findByEmail = findByEmailStatic;
 
 const User = mongoose.model("User", schema);
 
