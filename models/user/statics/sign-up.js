@@ -1,24 +1,36 @@
 "use strict";
 
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
+const commonPasswordList = require("fxa-common-password-list");
 
-// Create a sign in static that is going to abstact the authentication functionality
-module.exports = function({ email, password, name }) {
+const verifyPasswordStrength = password => {
+  if (commonPasswordList.test(password)) {
+    return false;
+  } else if (password.length < 8) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+module.exports = function({ username, password, email }) {
   const Model = this;
 
-  return Model.findByEmail(email)
+  return Model.findByUsername(username)
     .then(user => {
       if (user) {
         throw new Error("USER_ALREADY_EXISTS");
+      } else if (!verifyPasswordStrength(password)) {
+        throw new Error("PASSWORD_IS_NOT_STRONG");
       } else {
         return bcrypt.hash(password, 10);
       }
     })
     .then(hash => {
       return Model.create({
-        email,
-        passwordHash: hash,
-        name
+        username,
+        password: hash,
+        email
       });
     })
     .then(user => {

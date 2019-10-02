@@ -3,27 +3,28 @@
 const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({
-  email: {
+  username: {
     type: String,
     required: true,
     lowercase: true,
     trim: true,
     unique: true
   },
-  name: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  passwordHash: {
+  password: {
     type: String,
     required: true
   },
-  role: {
+  email: {
     type: String,
     required: true,
-    enum: ["user", "editor", "admin"],
-    default: "user"
+    unique: true
+  },
+  role: {
+    type: String,
+    enum: ["Hospital", "Patient"]
+  },
+  image: {
+    type: String
   }
 });
 
