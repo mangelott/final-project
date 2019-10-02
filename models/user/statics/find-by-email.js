@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(email) {
+module.exports = function (email) {
   const Model = this;
   return Model.findOne({ email })
     .then(user => {

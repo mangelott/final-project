@@ -4,13 +4,13 @@ const Recipe = require("./../models/recipe");
 
 exports.list = (req, res, next) => {
   Recipe.find()
-    .sort({ createdAt: -1 })
-    .populate("user")
+    // .sort({ createdAt: -1 })
+    // .populate("user")
     .then(recipes => {
       res.json({ type: "success", data: { recipes } });
     })
     .catch(error => {
-      console.log(error);
+      console.log("erro aqui", error);
       next(error);
     });
 };
@@ -22,7 +22,7 @@ exports.create = (req, res, next) => {
     dishtype,
     ingredient,
     direction,
-    calorie,
+    calories,
     duration } = req.body;
 
   Recipe.create({
@@ -31,14 +31,15 @@ exports.create = (req, res, next) => {
     dishtype,
     ingredient,
     direction,
-    calorie,
+    calories,
     duration
   })
     .then(recipe => {
       res.json({ type: "success", data: { recipe } });
+      console.log("teste", res.json);
     })
     .catch(error => {
-      console.log(error);
+      console.log("aqui ha erro", error);
       next(error);
     });
 };
@@ -60,13 +61,12 @@ exports.edit = (req, res, next) => {
   const id = req.params.id;
   const {
     title,
-    body
-    // picture,
-    // dishtype,
-    // ingredient,
-    // direction,
-    // calorie,
-    // duration
+    picture,
+    dishtype,
+    ingredient,
+    direction,
+    calories,
+    duration
   } = req.body;
   Recipe.findOneAndUpdate(
     {
@@ -74,20 +74,35 @@ exports.edit = (req, res, next) => {
     },
     {
       ...(title && { title }),
-      ...(body && { body })
+      ...(picture && { picture }),
+      ...(dishtype && { dishtype }),
+      ...(ingredient && { ingredient }),
+      ...(direction && { direction }),
+      ...(calories && { calories }),
+      ...(duration && { duration })
     },
-    { new: true }
-    // ...(picture && {picture}),
-    // ...(dishtype && {dishtype}),
-    // ...(ingredient && {ingredient}),
-    // ...(direction && {direction}),
-    // ...(ingredient && {ingredient}),
-  )
+    { new: true })
+
     .then(recipe => {
       if (recipe) {
         res.json({ type: "success", data: { recipe } });
       } else {
         next(new Error("RECIPE_COULD_NOT_BE_EDITED"));
+      }
+    })
+    .catch(error => {
+      next(error);
+    });
+};
+
+exports.remove = (req, res, next) => {
+  const id = req.params.id;
+  Recipe.findByIdAndDelete(id)
+    .then(recipe => {
+      if (recipe) {
+        res.json({ type: "success" });
+      } else {
+        next(new Error("RECIPE_COULD_NOT_BE_DELETED"));
       }
     })
     .catch(error => {
