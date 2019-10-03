@@ -1,43 +1,43 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 import { Container, Form, Button } from "react-bootstrap/";
 
 import * as AuthServ from "./../services/auth-view-service";
 
-export default class SingUp extends Component {
+export default class SingIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
       email: "",
       password: ""
     };
-    this.onValueChange = this.onValueChange.bind(this);
-    this.onSignUpSubmit = this.onSignUpSubmit.bind(this);
+    this.onSignInChange = this.onSignInChange.bind(this);
+    this.onSignInSubmit = this.onSignInSubmit.bind(this);
   }
 
-  onValueChange(event) {
+  onSignInChange(event) {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
       [name]: value
     });
+    console.log(this.props);
   }
 
-  onSignUpSubmit(/* event */) {
-    // event.preventDefault();
-    const { username, email, password } = this.state;
-    AuthServ.signUpViewServ({
-      username,
+  onSignInSubmit(event) {
+    event.preventDefaul();
+    console.dir(this.props);
+    const { email, password } = this.state;
+    AuthServ.signInViewServ({
       email,
       password
     })
       .then(user => {
         this.props.history.push("/loggedin");
+        console.log("push", this.props.history.push());
       })
       .catch(error => {
-        console.log("there was an error on signup>>>", error);
+        console.log("uv got an error trying to login", error);
       });
   }
 
@@ -45,43 +45,33 @@ export default class SingUp extends Component {
     return (
       <div>
         <Container>
-          <Form onSubmit={this.onSignUpSubmit}>
+          <Form onSubmit={this.onSignInSubmit}>
             <Form.Group>
               <Form.Label>Email</Form.Label>
               <Form.Control
-                name="email"
                 type="email"
                 placeholder="Enter email"
+                name="email"
                 value={this.state.email}
-                onChange={this.onValueChange}
+                onChange={this.onSignInChange}
               />
             </Form.Group>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                name="username"
-                type="username"
-                placeholder="Enter a username"
-                value={this.state.username}
-                onChange={this.onValueChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group>
               <Form.Label>Password</Form.Label>
               <Form.Control
-                name="password"
                 type="password"
                 placeholder="Password"
+                name="password"
                 value={this.state.password}
-                onChange={this.onValueChange}
+                onChange={this.onSignInChange}
               />
             </Form.Group>
             <Button variant="primary" type="submit">
-              Sign Up
+              Log in
             </Button>
             <Form.Text className="text-muted">
-              If you already has an account go to{" "}
-              <Link to="/sign-in">Sign In</Link>
+              Don't you have an user account yet? Click{" "}
+              <a href="/sign-up">here</a> to Sign up
             </Form.Text>
           </Form>
         </Container>

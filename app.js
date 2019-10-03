@@ -13,7 +13,7 @@ const mongoose = require("mongoose");
 
 const deserializeUserMiddleware = require("./middleware/deserialize-user");
 
-const apiRouter = require("./routes/auth");
+const authRouter = require("./routes/auth");
 const recipeRouter = require("./routes/recipe");
 const blogRouter = require("./routes/blogging");
 
@@ -40,7 +40,7 @@ app.use(
 
 app.use(deserializeUserMiddleware);
 
-app.use("/auth", apiRouter);
+app.use("/", authRouter);
 app.use("/", recipeRouter);
 app.use("/", blogRouter);
 

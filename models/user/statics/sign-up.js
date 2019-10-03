@@ -16,7 +16,7 @@ const verifyPasswordStrength = password => {
 module.exports = function({ username, password, email }) {
   const Model = this;
 
-  return Model.findByUsername(username)
+  return Model.findByEmail(email)
     .then(user => {
       if (user) {
         throw new Error("USER_ALREADY_EXISTS");
@@ -39,7 +39,7 @@ module.exports = function({ username, password, email }) {
     .catch(error => {
       console.log(error);
       return Promise.reject(
-        new Error("There was an error in the sign up process.")
+        new Error("There was an error in the sign up process.", error)
       );
     });
 };

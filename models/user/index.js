@@ -7,8 +7,7 @@ const schema = new mongoose.Schema({
     type: String,
     required: true,
     lowercase: true,
-    trim: true,
-    unique: true
+    trim: true
   },
   password: {
     type: String,
