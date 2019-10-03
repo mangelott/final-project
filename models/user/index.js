@@ -22,6 +22,10 @@ const schema = new mongoose.Schema({
   role: {
     type: String,
     enum: ["Hospital", "Patient"]
+  },
+  image: {
+    type: String,
+    required: true
   }
 });
 
