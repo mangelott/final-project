@@ -5,9 +5,9 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
-import SingInView from "./views/SignIn";
-import HomeView from "./views/Home";
-import LoggedInView from "./views/LoggedIn";
+import SingInView from "./views/user-views/SignIn";
+import HomeView from "./views/user-views/Home";
+import SignUpView from "./views/user-views/SingUp";
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
 
@@ -18,7 +18,8 @@ export default class App extends Component {
         <NavBar />
         <Switch>
           <Route path="/" exact component={SingInView} />
-          <Route path="/loggedin" component={LoggedInView} />
+          <Route path="/home" component={HomeView} />
+          <Route path="/signup" component={SignUpView} />
           <Route path="/error/:code" component={ErrorView} />
           <Route path="/" component={CatchAllView} />
         </Switch>

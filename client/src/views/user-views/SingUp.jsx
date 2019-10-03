@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Container, Form, Button } from "react-bootstrap/";
 
-import * as AuthServ from "./../services/auth-view-service";
+import * as AuthServ from "./../../services/auth-view-service";
 
 export default class SingUp extends Component {
   constructor(props) {
@@ -25,8 +25,8 @@ export default class SingUp extends Component {
     });
   }
 
-  onSignUpSubmit(/* event */) {
-    // event.preventDefault();
+  onSignUpSubmit(event) {
+    event.preventDefault();
     const { username, email, password } = this.state;
     AuthServ.signUpViewServ({
       username,
@@ -34,7 +34,7 @@ export default class SingUp extends Component {
       password
     })
       .then(user => {
-        this.props.history.push("/loggedin");
+        this.props.history.push("/home");
       })
       .catch(error => {
         console.log("there was an error on signup>>>", error);
@@ -80,8 +80,7 @@ export default class SingUp extends Component {
               Sign Up
             </Button>
             <Form.Text className="text-muted">
-              If you already has an account go to{" "}
-              <Link to="/sign-in">Sign In</Link>
+              If you already has an account go to <Link to="/">Sign In</Link>
             </Form.Text>
           </Form>
         </Container>
