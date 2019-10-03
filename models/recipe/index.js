@@ -20,7 +20,11 @@ const recipeSchema = new mongoose.Schema({
     type: Number,
     min: 0
   },
-  calories: Number
+  calories: Number,
+  image: {
+    type: String,
+    required: true
+  }
 }
 );
 

@@ -61,7 +61,6 @@ exports.edit = (req, res, next) => {
   const id = req.params.id;
   const {
     title,
-    picture,
     dishtype,
     ingredient,
     direction,
@@ -74,7 +73,6 @@ exports.edit = (req, res, next) => {
     },
     {
       ...(title && { title }),
-      ...(picture && { picture }),
       ...(dishtype && { dishtype }),
       ...(ingredient && { ingredient }),
       ...(direction && { direction }),
@@ -104,6 +102,27 @@ exports.remove = (req, res, next) => {
       } else {
         next(new Error("RECIPE_COULD_NOT_BE_DELETED"));
       }
+    })
+    .catch(error => {
+      next(error);
+    });
+};
+
+exports.uploadImage = (req, res, next) => {
+  const { url } = req.file;
+  Recipe.findByIdAndUpdate(
+    req.recipe._id,
+    {
+      ...(url && { image: url })
+    },
+    { new: true }
+  )
+    .then(recipe => {
+      if (!recipe) {
+        next(new Error("RECIPE_NOT_FOUND"));
+        return;
+      }
+      res.json({ recipe });
     })
     .catch(error => {
       next(error);

@@ -69,3 +69,24 @@ exports.remove = (req, res, next) => {
       next(error);
     });
 };
+
+exports.uploadImage = (req, res, next) => {
+  const { url } = req.file;
+  Blogging.findByIdAndUpdate(
+    req.blog._id,
+    {
+      ...(url && { image: url })
+    },
+    { new: true }
+  )
+    .then(blog => {
+      if (!blog) {
+        next(new Error("BLOG_NOT_FOUND"));
+        return;
+      }
+      res.json({ blog });
+    })
+    .catch(error => {
+      next(error);
+    });
+};
