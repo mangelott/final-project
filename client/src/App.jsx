@@ -18,7 +18,7 @@ export default class App extends Component {
         <NavBar />
         <Switch>
           <Route path="/" exact component={SingInView} />
-          <Route path="/home" component={HomeView} />
+          <Route path="/homePage" component={HomeView} />
           <Route path="/signup" component={SignUpView} />
           <Route path="/error/:code" component={ErrorView} />
           <Route path="/" component={CatchAllView} />

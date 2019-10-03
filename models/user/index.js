@@ -23,8 +23,7 @@ const schema = new mongoose.Schema({
     enum: ["Hospital", "Patient"]
   },
   image: {
-    type: String,
-    required: true
+    type: String
   }
 });
 
