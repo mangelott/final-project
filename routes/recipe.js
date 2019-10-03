@@ -6,7 +6,6 @@ const recipeControllers = require("./../controllers/recipe");
 const uploadImageMiddleware = require("./../middleware/upload-image");
 
 router.post("/recipe/create", recipeControllers.create);
-
 router.get("/recipe", recipeControllers.list);
 router.get("/recipe/:id", recipeControllers.load);
 router.patch("/recipe/:id", recipeControllers.edit);

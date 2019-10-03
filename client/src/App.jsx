@@ -10,6 +10,7 @@ import HomeView from "./views/user-views/Home";
 import SignUpView from "./views/user-views/SingUp";
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
+import CreateRecipeView from "./views/Recipe/newRecipe";
 
 export default class App extends Component {
   render() {
@@ -20,6 +21,7 @@ export default class App extends Component {
           <Route path="/" exact component={SingInView} />
           <Route path="/home" component={HomeView} />
           <Route path="/signup" component={SignUpView} />
+          <Route path="/recipe/create" component={CreateRecipeView} />
           <Route path="/error/:code" component={ErrorView} />
           <Route path="/" component={CatchAllView} />
         </Switch>

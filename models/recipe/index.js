@@ -6,10 +6,6 @@ const recipeSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  picture: {
-    type: String,
-    default: "https://images.media-allrecipes.com/images/75131.jpg"
-  },
   dishType: {
     type: String,
     enum: ["Breakfast", "Dish", "Snack", "Drink", "Dessert", "Other"]
