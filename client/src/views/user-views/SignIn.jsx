@@ -27,7 +27,7 @@ export default class SingIn extends Component {
   }
 
   onSignInSubmit(event) {
-    event.preventDefaul();
+    event.preventDefault();
     console.dir(this.props);
     const { email, password } = this.state;
     AuthServ.signInViewServ({
@@ -35,8 +35,8 @@ export default class SingIn extends Component {
       password
     })
       .then(user => {
-        this.props.history.push("/home");
         console.log("push", this.props.history.push());
+        this.props.history.push("/homePage");
       })
       .catch(error => {
         console.log("uv got an error trying to login", error);

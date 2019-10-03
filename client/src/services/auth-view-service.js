@@ -23,6 +23,7 @@ export const signInViewServ = ({ email, password }) =>
     authAPI
       .post("/signin", { email, password })
       .then(response => {
+        console.log(response);
         resolve(response.data.user);
       })
       .catch(error => {
