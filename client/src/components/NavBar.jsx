@@ -1,22 +1,36 @@
 import React, { Component } from "react";
 
-import { Navbar, Row } from "react-bootstrap/";
+import * as AuthServ from "./../services/auth-view-service";
+
+import { Navbar, Row, Form, Button } from "react-bootstrap/";
 
 export default class NavBar extends Component {
+  constructor(props) {
+    super(props);
+    this.signOut = this.signOut.bind(this);
+  }
+
+  signOut() {
+    // event.preventDefault();
+    AuthServ.logOutService()
+      .then(() => {
+        this.props.history.push("/home");
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <div>
         <Navbar bg="dark">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand>
             <Row>
-              {/* <img
-                src="/logo.svg"
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-              />{" "} */}
-              {/* <a hrf="/sign-in"></a> */}
               <h2>Happy Cure</h2>
+              <Form onSubmit={this.signOut}>
+                <Button type="submit">Log Out</Button>
+              </Form>
             </Row>
           </Navbar.Brand>
         </Navbar>

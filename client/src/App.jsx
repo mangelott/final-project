@@ -5,9 +5,9 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
-import SingInView from "./views/user-views/SignIn";
-import HomeView from "./views/user-views/Home";
-import SignUpView from "./views/user-views/SingUp";
+import SingInView from "./views/User/SignIn";
+import HomeView from "./views/User/Home";
+import SignUpView from "./views/User/SingUp";
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
 import CreateRecipeView from "./views/Recipe/newRecipe";

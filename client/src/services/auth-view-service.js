@@ -44,3 +44,15 @@ export const loggedInViewServ = () =>
         reject(error);
       });
   });
+
+export const logOutService = () =>
+  new Promise((resolve, reject) => {
+    authAPI
+      .post("/logout")
+      .then(response => {
+        resolve();
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
