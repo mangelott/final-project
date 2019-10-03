@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 
+import { Link } from "react-router-dom";
+
 import { Container, Form, Button } from "react-bootstrap/";
 
-import * as AuthServ from "./../services/auth-view-service";
+import * as AuthServ from "./../../services/auth-view-service";
 
 export default class SingIn extends Component {
   constructor(props) {
@@ -33,7 +35,7 @@ export default class SingIn extends Component {
       password
     })
       .then(user => {
-        this.props.history.push("/loggedin");
+        this.props.history.push("/home");
         console.log("push", this.props.history.push());
       })
       .catch(error => {
@@ -71,7 +73,7 @@ export default class SingIn extends Component {
             </Button>
             <Form.Text className="text-muted">
               Don't you have an user account yet? Click{" "}
-              <a href="/sign-up">here</a> to Sign up
+              <Link to="/signup">here</Link> to Sign up
             </Form.Text>
           </Form>
         </Container>
