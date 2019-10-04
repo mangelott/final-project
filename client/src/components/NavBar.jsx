@@ -29,7 +29,9 @@ export default class NavBar extends Component {
             <Row>
               <h2>Happy Cure</h2>
               <Form onSubmit={this.signOut}>
-                <Button type="submit">Log Out</Button>
+                <Button type="submit" href="/">
+                  Log Out
+                </Button>
               </Form>
             </Row>
           </Navbar.Brand>

@@ -6,12 +6,20 @@ const uploadImageMiddleware = require("./../middleware/upload-image");
 
 const bloggingControl = require("./../controllers/blogging");
 
-router.post("/blog/create", bloggingControl.create);
-router.get("/blog", bloggingControl.list);
-router.patch("/blog/:id", bloggingControl.edit);
-router.delete("/blog/:id", bloggingControl.remove);
-router.patch("/recipe/:id",
+router.post(
+  "/blog/create",
   uploadImageMiddleware.single("image"),
-  bloggingControl.uploadImage);
+  bloggingControl.create
+);
+
+router.get("/blog", bloggingControl.list);
+router.patch(
+  "/blog/:id",
+  uploadImageMiddleware.single("image"),
+  // bloggingControl.uploadImage,
+  // console.log(bloggingControl.uploadImage),
+  bloggingControl.edit
+);
+router.delete("/blog/:id", bloggingControl.remove);
 
 module.exports = router;
