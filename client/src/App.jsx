@@ -15,7 +15,8 @@ import SignUpView from "./views/User/SingUp";
 import CreateRecipeView from "./views/Recipe/newRecipe";
 
 //----------------------------BLOG VIEWS
-import CreatePostView from "./views/Blog/createPost";
+import BlogView from "./views/Blog/Posts";
+import CreatePostView from "./views/Blog/CreatePost";
 
 //----------------------------DEFAULT VIEWS
 import ErrorView from "./views/Error";
@@ -32,7 +33,8 @@ export default class App extends Component {
             <Route path="/homePage" component={HomeView} />
             <Route path="/signup" component={SignUpView} />
             <Route path="/recipe/create" component={CreateRecipeView} />
-            <Route path="/blog/create" compot={CreatePostView} />
+            <Route path="/blog" exact component={BlogView} />
+            <Route path="/blog/create" component={CreatePostView} />
             <Route path="/error/:code" component={ErrorView} />
             <Route path="/" component={CatchAllView} />
           </Switch>

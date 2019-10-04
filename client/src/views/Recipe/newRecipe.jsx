@@ -91,8 +91,8 @@ export default class newRecipe extends Component {
               onChange={this.handleChangeCreateRecipe}
             />
           </Form.Group>
-          <Form.Group controlId="formBasicCalories">
-            <div class="file btn btn-lg btn-primary">
+          <Form.Group>
+            <div>
               Upload
               <input type="file" name="image" />
             </div>

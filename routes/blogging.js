@@ -16,8 +16,6 @@ router.get("/blog", bloggingControl.list);
 router.patch(
   "/blog/:id",
   uploadImageMiddleware.single("image"),
-  // bloggingControl.uploadImage,
-  // console.log(bloggingControl.uploadImage),
   bloggingControl.edit
 );
 router.delete("/blog/:id", bloggingControl.remove);
