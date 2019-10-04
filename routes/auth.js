@@ -13,27 +13,21 @@ const logOutControl = require("./../controllers/auth/log-out");
 const editController = require("./../controllers/auth/edit");
 const uploadController = require("./../controllers/auth/upload");
 
-router.post("/signup",
-  signUpControl);
+router.post("/signup", signUpControl);
 
-router.get("/loggedin",
-  loggedInControl);
+router.get("/loggedin", loggedInControl);
 
-router.post("/signin",
-  signInControl);
+router.post("/signin", signInControl);
 
-router.post("/logout",
-  routeGuardMiddleware(true),
-  logOutControl);
+router.post("/logout", routeGuardMiddleware(true), logOutControl);
 
-router.post("/edit",
-  routeGuardMiddleware(true),
-  editController);
+router.post("/edit", routeGuardMiddleware(true), editController);
 
-router.post("/upload",
+router.post(
+  "/upload",
   routeGuardMiddleware(true),
   uploadImageMiddleware.single("image"),
-  uploadController);
-
+  uploadController
+);
 
 module.exports = router;

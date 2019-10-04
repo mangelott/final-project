@@ -3,8 +3,11 @@
 const Blogging = require("./../models/blog");
 
 exports.create = (req, res, next) => {
-  const { title, subtitle, image, text } = req.body;
+  const { title, subtitle, text } = req.body;
 
+  const image = req.file.secure_url;
+
+  console.log(req.file.secure_url);
   Blogging.create({
     title,
     subtitle,
@@ -32,7 +35,12 @@ exports.list = (req, res, next) => {
 
 exports.edit = (req, res, next) => {
   const id = req.params.id;
-  const { title, subtitle, image, text } = req.body;
+  console.log(id);
+
+  const { title, subtitle, text } = req.body;
+  const image = req.file.secure_url;
+  console.log(image);
+
   Blogging.findByIdAndUpdate(
     { _id: id },
     {
@@ -64,27 +72,6 @@ exports.remove = (req, res, next) => {
       } else {
         next(new Error("YOUR_POST_COULD_NOT_BE_DELETED"));
       }
-    })
-    .catch(error => {
-      next(error);
-    });
-};
-
-exports.uploadImage = (req, res, next) => {
-  const { url } = req.file;
-  Blogging.findByIdAndUpdate(
-    req.blog._id,
-    {
-      ...(url && { image: url })
-    },
-    { new: true }
-  )
-    .then(blog => {
-      if (!blog) {
-        next(new Error("BLOG_NOT_FOUND"));
-        return;
-      }
-      res.json({ blog });
     })
     .catch(error => {
       next(error);
