@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 
+import * as Service from "./../../services/recipe-view-service";
+
 export default class newRecipe extends Component {
   constructor(props) {
     super(props);
@@ -8,25 +10,66 @@ export default class newRecipe extends Component {
       title: "",
       dishType: "",
       ingredients: "",
-      direction: "",
+      directions: "",
       duration: "",
       calories: "",
       image: ""
     };
-    this.handleChangeCreateRecipe = this.handleChangeCreateRecipe.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+
+    // this.onFileChange = this.onFileChange.bind(this);
   }
 
   handleChangeCreateRecipe = event => {
     this.setState({
-      item: event.target.value
+      [event.target.name]: event.target.value
+    });
+    console.log(this.state);
+  };
+
+  handleChangeImage = event => {
+    console.log(event.target.files);
+    this.setState({
+      image: event.target.files[0]
     });
   };
+
+  onFormSubmit(event) {
+    event.preventDefault();
+    const {
+      title,
+      ingredients,
+      directions,
+      dishType,
+      duration,
+      calories,
+      image
+    } = this.state;
+
+    console.log("ONSUBMIT STATE", this.state);
+    Service.newRecipe({
+      title,
+      ingredients,
+      dishType,
+      directions,
+      duration,
+      calories,
+      image
+    })
+      .then(recipe => {
+        console.log("creation test", this.state);
+        this.props.history.push("/recipe");
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
   render() {
     return (
       <div>
-        <Form>
-          <Form.Group controlId="formBasicTitle">
+        <Form onSubmit={this.onFormSubmit}>
+          <Form.Group>
             <Form.Label>Title</Form.Label>
             <Form.Control
               type="text"
@@ -36,19 +79,28 @@ export default class newRecipe extends Component {
               onChange={this.handleChangeCreateRecipe}
             />
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Group>
             <Form.Label>Dish Type</Form.Label>
-            <Form.Control as="select">
-              <option>Breakfast</option>
-              <option>Dish</option>
-              <option>Snack</option>
-              <option>Drink</option>
-              <option>Dessert</option>
-              <option>Other</option>
+            <Form.Control
+              as="select"
+              placeholder="DishType"
+              name="dishType"
+              value={this.state.dishType}
+              onChange={this.handleChangeCreateRecipe}
+            >
+              <option value="" disabled>
+                Choose the type
+              </option>
+              {["Breakfast", "Dish", "Snack", "Drink", "Dessert", "Other"].map(
+                item => (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                )
+              )}
             </Form.Control>
           </Form.Group>
-
-          <Form.Group controlId="formBasicIngredients">
+          <Form.Group>
             <Form.Label>Ingredients</Form.Label>
             <Form.Control
               type="text"
@@ -59,18 +111,18 @@ export default class newRecipe extends Component {
             />
           </Form.Group>
 
-          <Form.Group controlId="formBasicDirections">
+          <Form.Group>
             <Form.Label>Directions</Form.Label>
             <Form.Control
               type="text"
               placeholder="Directions"
-              name="direction"
-              value={this.state.direction}
+              name="directions"
+              value={this.state.directions}
               onChange={this.handleChangeCreateRecipe}
             />
           </Form.Group>
 
-          <Form.Group controlId="formBasicDuration">
+          <Form.Group>
             <Form.Label>Duration</Form.Label>
             <Form.Control
               type="text"
@@ -81,7 +133,7 @@ export default class newRecipe extends Component {
             />
           </Form.Group>
 
-          <Form.Group controlId="formBasicCalories">
+          <Form.Group>
             <Form.Label>Calories</Form.Label>
             <Form.Control
               type="text"
@@ -91,15 +143,20 @@ export default class newRecipe extends Component {
               onChange={this.handleChangeCreateRecipe}
             />
           </Form.Group>
-          <Form.Group controlId="formBasicCalories">
-            <div class="file btn btn-lg btn-primary">
-              Upload
-              <input type="file" name="image" />
-            </div>
+
+          <Form.Group>
+            <label htmlFor="image" className="file-input">
+              <span>Profile Photo</span>
+            </label>
+            <Form.Control
+              id="recipe-profile"
+              type="file"
+              name="image"
+              onChange={this.handleChangeImage}
+            />
           </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
+
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     );

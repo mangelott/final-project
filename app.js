@@ -41,7 +41,7 @@ app.use(
 app.use(deserializeUserMiddleware);
 
 app.use("/", authRouter);
-app.use("/", recipeRouter);
+app.use("/recipe", recipeRouter);
 app.use("/", blogRouter);
 
 app.get("*", (req, res, next) => {
