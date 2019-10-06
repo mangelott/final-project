@@ -13,6 +13,13 @@ router.post(
 );
 
 router.get("/blog", bloggingControl.list);
+
+router.get(
+  "/blog/:id",
+  // uploadImageMiddleware.single("image"),
+  bloggingControl.load
+);
+
 router.patch(
   "/blog/:id",
   uploadImageMiddleware.single("image"),

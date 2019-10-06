@@ -33,3 +33,17 @@ export const postsServ = () =>
         reject(error);
       });
   });
+
+export const loadPostServ = id =>
+  new Promise((resolve, reject) => {
+    blogAPI
+      .get(`/blog/${id}`)
+      .then(response => {
+        resolve(response.data.data.blogging);
+        console.log("response", response);
+      })
+      .catch(error => {
+        reject(error);
+        console.log("this error>>>>>>>", error);
+      });
+  });
