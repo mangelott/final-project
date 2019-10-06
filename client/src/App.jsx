@@ -13,6 +13,7 @@ import SignUpView from "./views/User/SingUp";
 
 //--------------------------RECIPE VIEWS
 import CreateRecipeView from "./views/Recipe/newRecipe";
+// import RecipeView from "./views/Recipe";
 
 //----------------------------BLOG VIEWS
 import BlogView from "./views/Blog/Posts";
@@ -21,8 +22,6 @@ import CreatePostView from "./views/Blog/CreatePost";
 //----------------------------DEFAULT VIEWS
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
-import RecipeView from "./views/Recipe";
-import CreateRecipeView from "./views/Recipe/newRecipe";
 
 export default class App extends Component {
   render() {

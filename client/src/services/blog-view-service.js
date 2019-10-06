@@ -26,7 +26,8 @@ export const postsServ = () =>
     blogAPI
       .get("/blog")
       .then(response => {
-        resolve(response.data.data.posts);
+        resolve(response.data.data.blogging);
+        console.log("resolve", resolve);
       })
       .catch(error => {
         reject(error);
