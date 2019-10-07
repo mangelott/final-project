@@ -4,7 +4,7 @@ import * as PostServ from "../../services/blog-view-service";
 
 import { Link } from "react-router-dom";
 
-import { Container, Col, Card, Button, Row } from "react-bootstrap/";
+import { Container, Card, Button, Row } from "react-bootstrap/";
 
 export default class Blog extends Component {
   constructor(props) {
@@ -38,8 +38,7 @@ export default class Blog extends Component {
             </Row>
           </Card>
         </Container>
-        <Container /* className="d-flex justify-content-sm-around align-items-stretch" */
-        >
+        <Container>
           <Row>
             {this.state.posts.map(blogging => (
               <Card

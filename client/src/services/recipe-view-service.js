@@ -9,7 +9,7 @@ export const newRecipe = data => {
     const formData = new FormData();
     for (let prop in data) formData.append(prop, data[prop]);
     recipeAPI
-      .post("/recipe/create", formData)
+      .post("/create", formData)
       .then(response => {
         // console.log("RESPONSE", response.data.data.recipe)
         resolve(response.data.recipe);
@@ -23,7 +23,7 @@ export const newRecipe = data => {
 export const load = id => {
   return new Promise((resolve, reject) => {
     recipeAPI
-      .get(`/recipe/${id}`)
+      .get(`/${id}`)
       .then(response => {
         resolve(response.data.data.recipe);
       })
@@ -39,7 +39,7 @@ export const listRecipes = () =>
       .get("/recipe")
       .then(response => {
         resolve(response.data.data.recipes);
-        console.log("resolve", resolve);
+        // console.log("resolve", resolve);
       })
       .catch(error => {
         reject(error);
@@ -49,7 +49,7 @@ export const listRecipes = () =>
 export const edit = (id, updatedRecipe) => {
   return new Promise((resolve, reject) => {
     recipeAPI
-      .patch(`/recipe/${id}`, updatedRecipe)
+      .patch(`/${id}`, updatedRecipe)
       .then(response => {
         resolve(response.data.data.post);
       })
@@ -71,3 +71,5 @@ export const remove = id => {
       });
   });
 };
+
+
