@@ -1,9 +1,9 @@
 import React, { Component } from "react";
+import * as AuthServ from "./../../services/auth-view-service";
+
 import { Link } from "react-router-dom";
 
 import { Container, Form, Button } from "react-bootstrap/";
-
-import * as AuthServ from "./../../services/auth-view-service";
 
 export default class SingUp extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ export default class SingUp extends Component {
       password
     })
       .then(user => {
-        this.props.history.push("/home");
+        this.props.history.push("/homepage");
       })
       .catch(error => {
         console.log("there was an error on signup>>>", error);
