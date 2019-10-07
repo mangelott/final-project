@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import * as PostServ from "./../../services/blog-view-service";
 
-import { Card } from "react-bootstrap/";
+import * as PostServ from "./../../services/blog-view-service";
+import { Link } from "react-router-dom";
+
+import { Container, Card, Button } from "react-bootstrap/";
 
 export default class Post extends Component {
   constructor(props) {
@@ -9,6 +11,7 @@ export default class Post extends Component {
     this.state = {
       post: this.props
     };
+    this.deletePost = this.deletePost.bind(this);
   }
 
   loadPost() {
@@ -21,6 +24,17 @@ export default class Post extends Component {
       })
       .catch(error => {
         console.log("this is the load error2:", error);
+      });
+  }
+
+  deletePost() {
+    const id = this.props.match.params.id;
+    PostServ.removePostServ(id)
+      .then(blogging => {
+        this.props.history.push("/blog");
+      })
+      .catch(error => {
+        console.log("error when delete", error);
       });
   }
 
@@ -38,19 +52,39 @@ export default class Post extends Component {
   }
   render() {
     const post = this.state.blogging;
-    console.log("post>>>>>>>>", this.state.post);
     return (
       (post && (
         <div>
-          <Card className="text-center">
-            <Card.Body>
-              <Card.Img variant="top" src={post.image} />
-              <Card.Title>{post.title}</Card.Title>
-              <Card.Text sytle={{ height: "100px" }}>{post.text}</Card.Text>
-              {/* <Button variant="primary">Go somewhere</Button> */}
-            </Card.Body>
-            {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
-          </Card>
+          <Container>
+            <Card className="text-center">
+              <Card.Body>
+                <Card.Img variant="top" src={post.image} />
+                <div className="pt-2">
+                  <Card.Title>{post.title}</Card.Title>
+                  <span className="text-muted text-md-center">
+                    {post.subtitle}
+                  </span>
+                  <Card.Text
+                    className="text-justify"
+                    sytle={{ height: "100px" }}
+                  >
+                    {post.text}
+                  </Card.Text>
+                  <div className="d-flex justify-content-around">
+                    <Link to={`/blog/${this.props.match.params.id}/edit`}>
+                      <Button variant="primary">Edit Post</Button>
+                    </Link>
+                    <Link>
+                      <Button variant="primary" onClick={this.deletePost}>
+                        Delete the post
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </Card.Body>
+              {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
+            </Card>
+          </Container>
         </div>
       )) || <div></div>
     );

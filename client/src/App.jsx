@@ -19,6 +19,7 @@ import EditRecipeView from "./views/Recipe/editRecipe";
 import BlogView from "./views/Blog/ListOfPosts";
 import PostView from "./views/Blog/Post";
 import CreatePostView from "./views/Blog/CreatePost";
+import EditPostView from "./views/Blog/EditPost";
 
 //----------------------------DEFAULT VIEWS
 import ErrorView from "./views/Error";
@@ -38,8 +39,9 @@ export default class App extends Component {
             <Route path="/recipe/create" component={CreateRecipeView} />
             <Route path="/recipe/edit" component={EditRecipeView} />
             <Route path="/blog" exact component={BlogView} />
-            <Route path="/blog/:id" component={PostView} />
             <Route path="/blog/create" component={CreatePostView} />
+            <Route path="/blog/:id" exact component={PostView} />
+            <Route path="/blog/:id/edit" component={EditPostView} />
             <Route path="/error/:code" component={ErrorView} />
             <Route path="/" component={CatchAllView} />
           </Switch>

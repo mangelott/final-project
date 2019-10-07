@@ -27,7 +27,6 @@ export const postsServ = () =>
       .get("/blog")
       .then(response => {
         resolve(response.data.data.blogging);
-        console.log("resolve", resolve);
       })
       .catch(error => {
         reject(error);
@@ -40,10 +39,36 @@ export const loadPostServ = id =>
       .get(`/blog/${id}`)
       .then(response => {
         resolve(response.data.data.blogging);
-        console.log("response", response);
       })
       .catch(error => {
         reject(error);
         console.log("this error>>>>>>>", error);
       });
   });
+
+export const editPostServ = (id, updatedPost) =>
+  new Promise((resolve, reject) => {
+    blogAPI
+      .patch(`/blog/${id}`, updatedPost)
+      .then(response => {
+        resolve(response.data.data.blogging);
+        console.log("response edit", response);
+      })
+      .catch(error => {
+        console.log("ERROR", error);
+        reject(error);
+      });
+  });
+
+export const removePostServ = id => {
+  new Promise((resolve, reject) => {
+    blogAPI
+      .delete(`/blog/${id}`)
+      .then(() => {
+        resolve();
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+};
