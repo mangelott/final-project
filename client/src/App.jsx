@@ -12,17 +12,14 @@ import HomeView from "./views/User/Home";
 import SignUpView from "./views/User/SingUp";
 
 //--------------------------RECIPE VIEWS
-<<<<<<< HEAD
 import RecipeView from "./views/Recipe/Home";
-=======
-// import RecipeView from "./views/Recipe";
->>>>>>> 337a60a9d962a36cdc669d17ba776d32be9a489f
 import CreateRecipeView from "./views/Recipe/newRecipe";
 import EditRecipeView from "./views/Recipe/editRecipe";
 //----------------------------BLOG VIEWS
 import BlogView from "./views/Blog/ListOfPosts";
 import PostView from "./views/Blog/Post";
 import CreatePostView from "./views/Blog/CreatePost";
+import EditPostView from "./views/Blog/EditPost";
 
 //----------------------------DEFAULT VIEWS
 import ErrorView from "./views/Error";
@@ -44,6 +41,7 @@ export default class App extends Component {
             <Route path="/blog" exact component={BlogView} />
             <Route path="/blog/create" component={CreatePostView} />
             <Route path="/blog/:id" exact component={PostView} />
+            <Route path="/blog/:id/edit" component={EditPostView} />
             <Route path="/error/:code" component={ErrorView} />
             <Route path="/" component={CatchAllView} />
           </Switch>

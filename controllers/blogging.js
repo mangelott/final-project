@@ -49,8 +49,11 @@ exports.edit = (req, res, next) => {
   const id = req.params.id;
 
   const { title, subtitle, text } = req.body;
-  const image = req.file.secure_url;
-  console.log(image);
+  let image;
+  if (req.file) {
+    image = req.file.secure_url;
+    console.log(image);
+  }
 
   Blogging.findByIdAndUpdate(
     { _id: id },

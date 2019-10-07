@@ -25,6 +25,7 @@ router.patch(
   uploadImageMiddleware.single("image"),
   bloggingControl.edit
 );
+
 router.delete("/blog/:id", bloggingControl.remove);
 
 module.exports = router;

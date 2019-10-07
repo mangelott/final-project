@@ -12,7 +12,6 @@ export default class Blog extends Component {
     this.state = {
       posts: []
     };
-    console.log("this is this.props", this.state.props);
   }
 
   componentDidMount() {
