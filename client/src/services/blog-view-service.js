@@ -26,9 +26,24 @@ export const postsServ = () =>
     blogAPI
       .get("/blog")
       .then(response => {
-        resolve(response.data.data.posts);
+        resolve(response.data.data.blogging);
+        console.log("resolve", resolve);
       })
       .catch(error => {
         reject(error);
+      });
+  });
+
+export const loadPostServ = id =>
+  new Promise((resolve, reject) => {
+    blogAPI
+      .get(`/blog/${id}`)
+      .then(response => {
+        resolve(response.data.data.blogging);
+        console.log("response", response);
+      })
+      .catch(error => {
+        reject(error);
+        console.log("this error>>>>>>>", error);
       });
   });

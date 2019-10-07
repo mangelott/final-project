@@ -33,9 +33,20 @@ exports.list = (req, res, next) => {
     });
 };
 
+exports.load = (req, res, next) => {
+  const id = req.params.id;
+  Blogging.findById(id)
+    .then(blogging => {
+      res.json({ type: "success", data: { blogging } });
+    })
+    .catch(error => {
+      next(error);
+      console.log("loading error1:", error);
+    });
+};
+
 exports.edit = (req, res, next) => {
   const id = req.params.id;
-  console.log(id);
 
   const { title, subtitle, text } = req.body;
   const image = req.file.secure_url;

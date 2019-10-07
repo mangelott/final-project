@@ -1,8 +1,7 @@
 import React, { Component } from "react";
+import * as PostServ from "./../../services/blog-view-service";
 
 import { Container, Form, Button } from "react-bootstrap";
-
-import * as PostServ from "./../../services/blog-view-service";
 
 export default class CreatePost extends Component {
   constructor(props) {
