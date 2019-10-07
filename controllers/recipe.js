@@ -68,8 +68,8 @@ exports.load = (req, res, next) => {
   const id = req.params.id;
   Recipe.findById(id)
     .populate("user")
-    .then(post => {
-      res.json({ type: "success", data: { post } });
+    .then(recipe => {
+      res.json({ type: "success", data: { recipe } });
     })
     .catch(error => {
       console.log(error);

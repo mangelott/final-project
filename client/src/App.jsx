@@ -12,8 +12,9 @@ import HomeView from "./views/User/Home";
 import SignUpView from "./views/User/SingUp";
 
 //--------------------------RECIPE VIEWS
+import RecipeView from "./views/Recipe/Home";
 import CreateRecipeView from "./views/Recipe/newRecipe";
-
+import EditRecipeView from "./views/Recipe/editRecipe";
 //----------------------------BLOG VIEWS
 import BlogView from "./views/Blog/Posts";
 import CreatePostView from "./views/Blog/CreatePost";
@@ -21,8 +22,6 @@ import CreatePostView from "./views/Blog/CreatePost";
 //----------------------------DEFAULT VIEWS
 import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
-import RecipeView from "./views/Recipe";
-import CreateRecipeView from "./views/Recipe/newRecipe";
 
 export default class App extends Component {
   render() {
@@ -34,7 +33,9 @@ export default class App extends Component {
             <Route path="/" exact component={SingInView} />
             <Route path="/homePage" component={HomeView} />
             <Route path="/signup" component={SignUpView} />
+            <Route path="/recipe" exact component={RecipeView} />
             <Route path="/recipe/create" component={CreateRecipeView} />
+            <Route path="/recipe/edit" component={EditRecipeView} />
             <Route path="/blog" exact component={BlogView} />
             <Route path="/blog/create" component={CreatePostView} />
             <Route path="/error/:code" component={ErrorView} />
