@@ -59,3 +59,16 @@ export const editPostServ = (id, updatedPost) =>
         reject(error);
       });
   });
+
+export const removePostServ = id => {
+  new Promise((resolve, reject) => {
+    blogAPI
+      .delete(`/blog/${id}`)
+      .then(() => {
+        resolve();
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+};
