@@ -12,11 +12,7 @@ import HomeView from "./views/User/Home";
 import SignUpView from "./views/User/SingUp";
 
 //--------------------------RECIPE VIEWS
-<<<<<<< HEAD
 import RecipeView from "./views/Recipe/Home";
-=======
-// import RecipeView from "./views/Recipe";
->>>>>>> 337a60a9d962a36cdc669d17ba776d32be9a489f
 import CreateRecipeView from "./views/Recipe/newRecipe";
 import EditRecipeView from "./views/Recipe/editRecipe";
 //----------------------------BLOG VIEWS

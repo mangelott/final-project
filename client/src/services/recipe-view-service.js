@@ -11,7 +11,7 @@ export const newRecipe = data => {
     recipeAPI
       .post("/recipe/create", formData)
       .then(response => {
-        console.log("RESPONSE", response.data.data.recipe)
+        // console.log("RESPONSE", response.data.data.recipe)
         resolve(response.data.recipe);
       })
       .catch(error => {
@@ -32,6 +32,19 @@ export const load = id => {
       });
   });
 };
+
+export const listRecipes = () =>
+  new Promise((resolve, reject) => {
+    recipeAPI
+      .get("/recipe")
+      .then(response => {
+        resolve(response.data.data.recipes);
+        console.log("resolve", resolve);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
 
 export const edit = (id, updatedRecipe) => {
   return new Promise((resolve, reject) => {
