@@ -15,6 +15,7 @@ router.patch("/recipe/:id",
   recipeControllers.uploadImage);
 
 router.get("/recipe", recipeControllers.list);
+
 router.get("/recipe/:id", recipeControllers.load);
 router.patch("/recipe/:id", recipeControllers.edit);
 router.delete("/recipe/:id", recipeControllers.remove);

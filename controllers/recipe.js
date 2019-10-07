@@ -8,7 +8,7 @@ exports.list = (req, res, next) => {
       res.json({ type: "success", data: { recipes } });
     })
     .catch(error => {
-      console.log("erro aqui", error);
+      console.log("erro list contr", error);
       next(error);
     });
 };
