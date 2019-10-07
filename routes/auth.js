@@ -15,7 +15,7 @@ const uploadController = require("./../controllers/auth/upload");
 
 router.post("/signup", signUpControl);
 
-router.get("/loggedin", loggedInControl);
+router.get("/loggedin/:userId", loggedInControl);
 
 router.post("/signin", signInControl);
 

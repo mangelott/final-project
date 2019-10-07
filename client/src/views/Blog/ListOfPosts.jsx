@@ -13,6 +13,7 @@ export default class Blog extends Component {
       posts: []
     };
   }
+  npm;
 
   componentDidMount() {
     PostServ.postsServ()
