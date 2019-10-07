@@ -23,7 +23,6 @@ export const signInViewServ = ({ email, password }) =>
     authAPI
       .post("/signin", { email, password })
       .then(response => {
-        console.log(response);
         resolve(response.data.user);
       })
       .catch(error => {
@@ -32,13 +31,14 @@ export const signInViewServ = ({ email, password }) =>
       });
   });
 
-export const loggedInViewServ = () =>
+export const loadUserServ = id =>
   new Promise((resolve, reject) => {
     authAPI
-      .get("/loggedin")
+      .get("/loggedin/" + id)
       .then(response => {
-        const user = response.data.user;
-        resolve(user);
+        console.log("USER SERVICE RESPONSE", response.data.user);
+
+        resolve(response.data.user);
       })
       .catch(error => {
         reject(error);

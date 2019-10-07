@@ -10,11 +10,13 @@ import NavBar from "./components/NavBar";
 import SingInView from "./views/User/SignIn";
 import HomeView from "./views/User/Home";
 import SignUpView from "./views/User/SingUp";
+import ProfileView from "./views/User/Profile";
 
 //--------------------------RECIPE VIEWS
 import RecipeView from "./views/Recipe/Home";
 import CreateRecipeView from "./views/Recipe/newRecipe";
 import EditRecipeView from "./views/Recipe/editRecipe";
+
 //----------------------------BLOG VIEWS
 import BlogView from "./views/Blog/ListOfPosts";
 import PostView from "./views/Blog/Post";
@@ -33,8 +35,9 @@ export default class App extends Component {
         <div>
           <Switch>
             <Route path="/" exact component={SingInView} />
-            <Route path="/homePage" component={HomeView} />
+            <Route path="/homepage" component={HomeView} />
             <Route path="/signup" component={SignUpView} />
+            <Route path="/user/:id" component={ProfileView} />
             <Route path="/recipe" exact component={RecipeView} />
             <Route path="/recipe/create" component={CreateRecipeView} />
             <Route path="/recipe/edit" component={EditRecipeView} />

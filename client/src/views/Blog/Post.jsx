@@ -11,6 +11,7 @@ export default class Post extends Component {
     this.state = {
       post: this.props
     };
+    this.loadPost = this.loadPost.bind(this);
     this.deletePost = this.deletePost.bind(this);
   }
 
