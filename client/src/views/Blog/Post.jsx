@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as PostServ from "./../../services/blog-view-service";
 
-import { Card } from "react-bootstrap/";
+import { Container, Card, Button } from "react-bootstrap/";
 
 export default class Post extends Component {
   constructor(props) {
@@ -42,15 +42,18 @@ export default class Post extends Component {
     return (
       (post && (
         <div>
-          <Card className="text-center">
-            <Card.Body>
-              <Card.Img variant="top" src={post.image} />
-              <Card.Title>{post.title}</Card.Title>
-              <Card.Text sytle={{ height: "100px" }}>{post.text}</Card.Text>
-              {/* <Button variant="primary">Go somewhere</Button> */}
-            </Card.Body>
-            {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
-          </Card>
+          <Container>
+            <Card className="text-center">
+              <Card.Body>
+                <Card.Img variant="top" src={post.image} />
+                <Card.Title>{post.title}</Card.Title>
+                <Card.Text sytle={{ height: "100px" }}>{post.text}</Card.Text>
+                <Button variant="primary">Edit the post</Button>
+                <Button variant="primary">Delete the post</Button>
+              </Card.Body>
+              {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
+            </Card>
+          </Container>
         </div>
       )) || <div></div>
     );

@@ -33,6 +33,16 @@ export default class NavBar extends Component {
                   Log Out
                 </Button>
               </Form>
+              <Form>
+                <Button type="submit" href="/blog">
+                  Blog
+                </Button>
+              </Form>
+              <Form>
+                <Button type="submit" href="/recipe">
+                  Recipes
+                </Button>
+              </Form>
             </Row>
           </Navbar.Brand>
         </Navbar>

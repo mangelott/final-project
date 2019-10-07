@@ -4,7 +4,7 @@ import * as PostServ from "../../services/blog-view-service";
 
 import { Link } from "react-router-dom";
 
-import { Container, Card, Button } from "react-bootstrap/";
+import { Container, Card, Button, Row } from "react-bootstrap/";
 
 export default class Blog extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class Blog extends Component {
     this.state = {
       posts: []
     };
-    console.log("this is this.props", this.props);
+    console.log("this is this.props", this.state.props);
   }
 
   componentDidMount() {
@@ -30,6 +30,15 @@ export default class Blog extends Component {
   render() {
     return (
       <div className="mt-3">
+        <Container>
+          <Card>
+            <Row>
+              <Button type="submit" href="/blog/create">
+                Create a post
+              </Button>
+            </Row>
+          </Card>
+        </Container>
         <Container className="d-flex justify-content-sm-around align-items-stretch">
           {this.state.posts.map(blogging => (
             <Card style={{ width: "22rem" }} key={blogging._id}>

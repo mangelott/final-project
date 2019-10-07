@@ -36,8 +36,8 @@ export default class App extends Component {
             <Route path="/signup" component={SignUpView} />
             <Route path="/recipe/create" component={CreateRecipeView} />
             <Route path="/blog" exact component={BlogView} />
-            <Route path="/blog/:id" component={PostView} />
             <Route path="/blog/create" component={CreatePostView} />
+            <Route path="/blog/:id" exact component={PostView} />
             <Route path="/error/:code" component={ErrorView} />
             <Route path="/" component={CatchAllView} />
           </Switch>
