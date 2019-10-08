@@ -14,7 +14,8 @@ module.exports = (req, res, next) => {
       ...(username && { username }),
       ...(email && { email })
     },
-    { new: true })
+    { new: true }
+  )
 
     .then(user => {
       if (user) {

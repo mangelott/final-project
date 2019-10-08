@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import * as AuthServ from "./../../services/auth-view-service";
 
-import { Container, Form } from "react-bootstrap/";
+import { Link } from "react-router-dom";
+
+import { Container, Button, Card, Figure } from "react-bootstrap/";
 
 export default class Profile extends Component {
   constructor(props) {
@@ -9,7 +11,7 @@ export default class Profile extends Component {
     this.state = {
       user: ""
     };
-    console.log("this.state", this.props);
+    // console.log("this.state", this.props);
     this.loadUser = this.loadUser.bind(this);
   }
 
@@ -25,26 +27,30 @@ export default class Profile extends Component {
       });
   }
 
+  deleteUser() {
+    const id = this.props.match.params.id;
+  }
+
   componentDidMount() {
     this.loadUser();
   }
 
   render() {
-    // const user = this.state.user;
+    const user = this.state.user;
     return (
       <div>
-        {JSON.stringify(this.state)}
+        <Link to={`/profile/${this.props.match.params.id}/edit`}>
+          <Button>Edit</Button>
+        </Link>
         <Container>
-          <Form>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Upload Picture</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
-          </Form>
-          <h1>{}</h1>
+          <Card className="border-0" style={{ width: "300px" }}>
+            <Figure>
+              <Figure.Image variant="top" src={user.image} roundedCircle />
+            </Figure>
+          </Card>
+
+          <h1>{user.username}'s Profile</h1>
+          <span className="text-muted">{user.email}</span>
         </Container>
       </div>
     );

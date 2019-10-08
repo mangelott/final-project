@@ -6,7 +6,6 @@ const schema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    lowercase: true,
     trim: true
   },
   password: {
@@ -23,7 +22,9 @@ const schema = new mongoose.Schema({
     enum: ["Hospital", "Patient"]
   },
   image: {
-    type: String
+    type: String,
+    default:
+      "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_960_720.jpg"
   }
 });
 

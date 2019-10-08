@@ -11,6 +11,7 @@ import SingInView from "./views/User/SignIn";
 import HomeView from "./views/User/Home";
 import SignUpView from "./views/User/SingUp";
 import ProfileView from "./views/User/Profile";
+import EditProfileView from "./views/User/EditProfile";
 
 //--------------------------RECIPE VIEWS
 import RecipeView from "./views/Recipe/Home";
@@ -37,7 +38,8 @@ export default class App extends Component {
             <Route path="/" exact component={SingInView} />
             <Route path="/homepage" component={HomeView} />
             <Route path="/signup" component={SignUpView} />
-            <Route path="/user/:id" component={ProfileView} />
+            <Route path="/user/:id" exatc component={ProfileView} />
+            <Route path="/user/:id/edit" component={EditProfileView} />
             <Route path="/recipe" exact component={RecipeView} />
             <Route path="/recipe/create" component={CreateRecipeView} />
             <Route path="/recipe/edit" component={EditRecipeView} />
