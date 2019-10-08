@@ -4,7 +4,11 @@ const User = require("../../models/user");
 
 module.exports = (req, res, next) => {
   const id = req.params.id;
-  const { username, email } = req.body;
+  const { username, email, about } = req.body;
+  let image;
+  if (req.file) {
+    image = req.file.secure_url;
+  }
 
   User.findOneAndUpdate(
     {

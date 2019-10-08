@@ -43,7 +43,7 @@ export default class Blog extends Component {
         >
           <Row>
             {this.state.posts.map(blogging => (
-              <Link to={`/blog/${blogging._id}`}>
+              <Link key={blogging._id} to={`/blog/${blogging._id}`}>
                 <Card
                   className="mx-2 mt-5 mb-1"
                   style={{ width: "22rem" }}

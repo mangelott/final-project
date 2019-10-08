@@ -28,9 +28,9 @@ export default class Profile extends Component {
       });
   }
 
-  deleteUser() {
-    const id = this.props.match.params.id;
-  }
+  // deleteUser() {
+  //   const id = this.props.match.params.id;
+  // }
 
   componentDidMount() {
     this.loadUser();
@@ -40,7 +40,7 @@ export default class Profile extends Component {
     const user = this.state.user;
     return (
       <div>
-        <Link to={`/user/${this.props.match.params.id}/edit`}>
+        <Link to={`/user/${user._id}/edit`}>
           <Button>Edit</Button>
         </Link>
         <Container>

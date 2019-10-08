@@ -3,7 +3,7 @@ import * as AuthServ from "./../services/auth-view-service";
 
 import { Link } from "react-router-dom";
 
-import { Navbar, Row, Form, Button } from "react-bootstrap/";
+import { Navbar, Row } from "react-bootstrap/";
 
 export default class NavBar extends Component {
   constructor(props) {
@@ -44,18 +44,19 @@ export default class NavBar extends Component {
   }
 
   render() {
-    const user = this.state.user;
     return (
       <div>
         <Navbar bg="dark">
           <Navbar.Brand>
             <Row>
               <h2>Happy Cure</h2>
-              <Form onSubmit={this.signOut}>
-                <Button type="submit" href="/">
-                  Log Out
-                </Button>
-              </Form>
+              <Link
+                className="btn btn-primary"
+                to={"/"}
+                onSubmit={this.signOut}
+              >
+                Log Out
+              </Link>
               <Link className="btn btn-primary" to={"/blog"}>
                 Blog
               </Link>

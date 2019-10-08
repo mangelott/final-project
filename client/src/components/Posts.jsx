@@ -1,0 +1,54 @@
+import React, { Component } from "react";
+
+import * as PostServ from "./../services/blog-view-service";
+
+import { Link } from "react-router-dom";
+
+import { Container, Card, Row } from "react-bootstrap/";
+
+export default class Blog extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: []
+    };
+  }
+  npm;
+
+  componentDidMount() {
+    PostServ.postsServ()
+      .then(posts => {
+        this.setState({
+          posts
+        });
+        console.log("post:", posts);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+  render() {
+    return (
+      <div>
+        <Container className="mb-4" style={{ width: "18rem" }}>
+          {this.state.posts.map(blogging => (
+            <Link key={blogging._id} to={`/blog/${blogging._id}`}>
+              <Row>
+                <Card className="mt-4 border-0 rounded-lg text-white">
+                  <Card.Img
+                    // className="purple-filter"
+                    src={blogging.image}
+                    alt="Card image"
+                  />
+                  <Card.ImgOverlay className="purple-filter">
+                    <Card.Title>{blogging.title}</Card.Title>
+                  </Card.ImgOverlay>
+                </Card>
+              </Row>
+            </Link>
+          ))}
+        </Container>
+      </div>
+    );
+  }
+}

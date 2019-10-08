@@ -75,7 +75,7 @@ export default class Post extends Component {
                     <Link to={`/blog/${this.props.match.params.id}/edit`}>
                       <Button variant="primary">Edit Post</Button>
                     </Link>
-                    <Link>
+                    <Link to={"/blog"}>
                       <Button variant="primary" onClick={this.deletePost}>
                         Delete the post
                       </Button>
@@ -83,7 +83,6 @@ export default class Post extends Component {
                   </div>
                 </div>
               </Card.Body>
-              {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
             </Card>
           </Container>
         </div>

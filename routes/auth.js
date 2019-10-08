@@ -21,7 +21,7 @@ router.post("/signin", signInControl);
 
 router.post("/logout", routeGuardMiddleware(true), logOutControl);
 
-router.post("/edit", routeGuardMiddleware(true), editController);
+router.patch("/edit", uploadImageMiddleware.single("image"), editController);
 
 router.post(
   "/upload",
