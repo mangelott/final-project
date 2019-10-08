@@ -23,9 +23,12 @@ export const newRecipe = data => {
 export const load = id => {
   return new Promise((resolve, reject) => {
     recipeAPI
-      .get(`/${id}`)
+      .get(`/recipe/${id}`)
       .then(response => {
+        console.log(response.data.data.recipe)
+
         resolve(response.data.data.recipe);
+
       })
       .catch(error => {
         reject(error);
@@ -46,18 +49,20 @@ export const listRecipes = () =>
       });
   });
 
-export const edit = (id, updatedRecipe) => {
-  return new Promise((resolve, reject) => {
+export const edit = (id, updatedRecipe) =>
+  new Promise((resolve, reject) => {
     recipeAPI
-      .patch(`/${id}`, updatedRecipe)
+      .patch(`/recipe/${id}`, updatedRecipe)
       .then(response => {
-        resolve(response.data.data.post);
+        resolve(response.data.data.recipes);
+        console.log("response edit", response);
       })
       .catch(error => {
+        reject("ERROR", error);
         reject(error);
       });
   });
-};
+
 
 export const remove = id => {
   return new Promise((resolve, reject) => {
@@ -71,5 +76,6 @@ export const remove = id => {
       });
   });
 };
+
 
 

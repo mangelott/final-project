@@ -23,12 +23,6 @@ export default class RecipeList extends Component {
       });
   };
 
-  clearList = () => {
-    this.setState({
-      items: []
-    });
-  };
-
   componentDidMount() {
     this.loadAll();
   }
@@ -48,7 +42,7 @@ export default class RecipeList extends Component {
 
   render() {
     const { handleEdit } = this.props;
-    const { handleDelete, clearList } = this;
+    const { handleDelete } = this;
     return (
       <div>
         <ul className="list-group my-5">
@@ -62,16 +56,10 @@ export default class RecipeList extends Component {
                   handleEdit={() => handleEdit(recipe._id)}
                   handleDelete={() => handleDelete(recipe._id)}
                   loadAll={this.loadAll}
+                  id={recipe._id}
                 />
               );
             })}
-          <button
-            type="button"
-            onClick={this.clearList}
-            className="btn btn-danger btn-block text-capitalize mt-5"
-          >
-            Clear All Recipes
-          </button>
         </ul>
       </div>
     );

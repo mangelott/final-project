@@ -69,6 +69,7 @@ exports.load = (req, res, next) => {
   Recipe.findById(id)
     .populate("user")
     .then(recipe => {
+      console.log(recipe)
       res.json({ type: "success", data: { recipe } });
     })
     .catch(error => {
@@ -79,15 +80,13 @@ exports.load = (req, res, next) => {
 
 exports.edit = (req, res, next) => {
   const id = req.params.id;
-  const {
-    title,
-    dishtype,
-    ingredients,
-    directions,
-    calories,
-    duration
-  } = req.body;
-  Recipe.findOneAndUpdate(
+  const { title, dishtype, ingredients, directions, calories, duration } = req.body;
+  let image;
+  if (req.file) {
+    image.req.file.secure_url;
+  }
+
+  Recipe.findByIdAndUpdate(
     {
       _id: id
     },

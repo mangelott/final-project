@@ -12,7 +12,7 @@ router.post("/create",
 
 router.patch("/recipe/:id",
   uploadImageMiddleware.single("image"),
-  recipeControllers.uploadImage);
+  recipeControllers.edit);
 
 router.get("/recipe", recipeControllers.list);
 

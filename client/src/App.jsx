@@ -40,7 +40,7 @@ export default class App extends Component {
             <Route path="/user/:id" component={ProfileView} />
             <Route path="/recipe" exact component={RecipeView} />
             <Route path="/recipe/create" component={CreateRecipeView} />
-            <Route path="/recipe/edit" component={EditRecipeView} />
+            <Route path="/recipe/:id/edit" component={EditRecipeView} />
             <Route path="/blog" exact component={BlogView} />
             <Route path="/blog/create" component={CreatePostView} />
             <Route path="/blog/:id" exact component={PostView} />
