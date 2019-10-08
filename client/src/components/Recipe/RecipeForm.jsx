@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 export default class RecipeForm extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ export default class RecipeForm extends Component {
 
   onFormSubmit(event) {
     event.preventDefault();
-    this.props.onFormSubmit();
+    this.props.onFormSubmit(event);
   }
 
   render() {
@@ -76,6 +77,7 @@ export default class RecipeForm extends Component {
               onChange={this.onValueChange}
             />
           </Form.Group>
+          <Button type="submit">Submit</Button>
         </Form>
       </div>
     );

@@ -64,7 +64,7 @@ export default class editRecipe extends Component {
     const id = this.props.match.params.id;
     Service.remove(id)
       .then(recipe => {
-        this.props.history.push("/");
+        this.props.history.push("/recipe");
       })
       .catch(error => {
         console.log(error);
@@ -74,14 +74,12 @@ export default class editRecipe extends Component {
   render() {
     return (
       <div>
-        <h1>Edit Recipe:</h1>
+        <h3>Edit Recipe: {this.state.recipe.title}</h3>
         <RecipeForm
           value={this.state.recipe}
           onValueChange={this.onFormValueChange}
           onFormSubmit={this.editRecipe}
-        >
-          <Button type="submit">Edit Recipe</Button>
-        </RecipeForm>
+        ></RecipeForm>
         <Button onClick={this.deleteRecipe} className="btn-danger">
           Delete Recipe
         </Button>
