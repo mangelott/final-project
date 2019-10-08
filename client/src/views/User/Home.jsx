@@ -5,6 +5,7 @@ export default class HomeView extends Component {
   render() {
     return (
       <div>
+        {/* <Navbar /> */}
         <Carousel />
       </div>
     );

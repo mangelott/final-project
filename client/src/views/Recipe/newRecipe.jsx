@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 
-import * as Service from "./../../services/recipe-view-service";
+import * as Service from "../../services/recipe-view-service";
 
 export default class newRecipe extends Component {
   constructor(props) {

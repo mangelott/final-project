@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 
 import RecipeForm from "../../components/Recipe/RecipeForm";
 
-import * as Service from "./../../services/recipe-view-service";
+import * as Service from "../../services/recipe-view-service";
 
 export default class editRecipe extends Component {
   constructor(props) {

@@ -67,9 +67,8 @@ exports.create = (req, res, next) => {
 exports.load = (req, res, next) => {
   const id = req.params.id;
   Recipe.findById(id)
-    .populate("user")
+    // .populate("user")
     .then(recipe => {
-      console.log(recipe)
       res.json({ type: "success", data: { recipe } });
     })
     .catch(error => {

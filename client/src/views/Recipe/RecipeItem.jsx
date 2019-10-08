@@ -7,7 +7,11 @@ export default class RecipeItem extends Component {
     return (
       <div>
         <li className="li list-group-item text-capitalize d-flex justify-content-between my-2">
-          <h6>{title}</h6>
+          <Link to={`/recipe/${id}`}>
+            <span>
+              <h6>{title}</h6>
+            </span>
+          </Link>
           <div className="todo-icon">
             <Link to={`/recipe/${id}/edit`}>
               <span className="mx-2 text-success">
