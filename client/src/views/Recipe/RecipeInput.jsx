@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Dropdown } from "react-bootstrap";
 export default class TodoInput extends Component {
   render() {
-    const { item, handleChange, handleSubmit } = this.props;
+    const { item, handleChange } = this.props;
     return (
       <div className="card card-body my-3">
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="input-group">
             <div className="input-group-prepend">
               <div className="input-group-text bg-success text-white">

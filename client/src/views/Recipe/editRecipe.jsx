@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-
 import Button from "react-bootstrap/Button";
 
 import RecipeForm from "../../components/Recipe/RecipeForm";
 
-import { edit, load, remove } from "../../services/recipe-view-service";
+import * as Service from "./../../services/recipe-view-service";
 
 export default class editRecipe extends Component {
   constructor(props) {
@@ -25,12 +24,11 @@ export default class editRecipe extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    load(id)
+    Service.load(id)
       .then(recipe => {
-        recipe.setState({
-          recipe: {
-            ...recipe
-          }
+        console.log(recipe);
+        this.setState({
+          recipe
         });
       })
       .catch(error => {
@@ -47,21 +45,24 @@ export default class editRecipe extends Component {
     });
   }
 
-  editRecipe() {
+  editRecipe(event) {
+    event.preventDefault();
     const id = this.props.match.params.id;
     const recipe = this.state.recipe;
-    edit(id, recipe)
+    console.log("ID", id, "RECIPE BODY ", recipe);
+    Service.edit(id, recipe)
       .then(recipe => {
-        this.props.history.push(`/recipe/${recipe._id}`);
+        // this.props.history.push(`/recipe/${id}`);
+        console.log("this props", recipe);
       })
       .catch(error => {
-        console.log(error);
+        console.log("error trying to edit", error);
       });
   }
 
   deleteRecipe() {
     const id = this.props.match.params.id;
-    remove(id)
+    Service.remove(id)
       .then(recipe => {
         this.props.history.push("/");
       })

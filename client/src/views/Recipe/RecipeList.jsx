@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import RecipeItem from "./RecipeItem";
-// import { Link } from "react-router-dom";
 import * as ServiceRecipe from "../../services/recipe-view-service";
-// import { Card, Container } from "react-bootstrap/";
 
 export default class RecipeList extends Component {
   constructor(props) {
@@ -10,10 +8,26 @@ export default class RecipeList extends Component {
     this.state = {
       items: []
     };
-    // console.log(this.state);
   }
 
+  handleDelete = id => {
+    const filteredItems = this.state.items.filter(item => item._id !== id);
+    ServiceRecipe.remove(id)
+      .then(recipe => {
+        this.setState({
+          items: filteredItems
+        });
+      })
+      .catch(error => {
+        console.log("error when delete", error);
+      });
+  };
+
   componentDidMount() {
+    this.loadAll();
+  }
+
+  loadAll() {
     ServiceRecipe.listRecipes()
       .then(items => {
         this.setState({
@@ -27,7 +41,8 @@ export default class RecipeList extends Component {
   }
 
   render() {
-    const { clearList, handleDelete, handleEdit } = this.props;
+    const { handleEdit } = this.props;
+    const { handleDelete } = this;
     return (
       <div>
         <ul className="list-group my-5">
@@ -36,20 +51,15 @@ export default class RecipeList extends Component {
             this.state.items.map(recipe => {
               return (
                 <RecipeItem
-                  key={recipe.id}
+                  key={recipe._id}
                   title={recipe.title}
-                  handleDelete={() => handleDelete(recipe.id)}
-                  handleEdit={() => handleEdit(recipe.id)}
+                  handleEdit={() => handleEdit(recipe._id)}
+                  handleDelete={() => handleDelete(recipe._id)}
+                  loadAll={this.loadAll}
+                  id={recipe._id}
                 />
               );
             })}
-          <button
-            type="button"
-            onClick={clearList}
-            className="btn btn-danger btn-block text-capitalize mt-5"
-          >
-            Clear All Recipes
-          </button>
         </ul>
       </div>
     );

@@ -1,16 +1,19 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class RecipeItem extends Component {
   render() {
-    const { title, handleEdit, handleDelete } = this.props;
+    const { title, id, handleDelete } = this.props;
     return (
       <div>
         <li className="li list-group-item text-capitalize d-flex justify-content-between my-2">
           <h6>{title}</h6>
           <div className="todo-icon">
-            <span className="mx-2 text-success" onClick={handleEdit}>
-              <i className="fas fa-pen"></i>
-            </span>
+            <Link to={`/recipe/${id}/edit`}>
+              <span className="mx-2 text-success">
+                <i className="fas fa-pen"></i>
+              </span>
+            </Link>
             <span className="mx-2 text-danger" onClick={handleDelete}>
               <i className="fas fa-trash"></i>
             </span>

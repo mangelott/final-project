@@ -22,6 +22,7 @@ export default class RecipeForm extends Component {
   }
 
   render() {
+    console.log("STATE FROM PROPS", this.props.value);
     return (
       <div>
         <Form onSubmit={this.onFormSubmit}>
