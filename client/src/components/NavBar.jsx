@@ -1,14 +1,35 @@
 import React, { Component } from "react";
-
 import * as AuthServ from "./../services/auth-view-service";
+
+import { Link } from "react-router-dom";
 
 import { Navbar, Row, Form, Button } from "react-bootstrap/";
 
 export default class NavBar extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      user: ""
+    };
     this.signOut = this.signOut.bind(this);
-    this.profilePage = this.profilePage.bind(this);
+    this.loadUser = this.loadUser.bind(this);
+  }
+
+  loadUser() {
+    AuthServ.loadUserServ()
+      .then(user => {
+        console.log("props", this.props);
+        this.setState({
+          user
+        });
+      })
+      .catch(error => {
+        console.log("loading user error:", error);
+      });
+  }
+
+  componentDidMount() {
+    this.loadUser();
   }
 
   signOut(event) {
@@ -22,18 +43,8 @@ export default class NavBar extends Component {
       });
   }
 
-  profilePage(event) {
-    event.preventDefault();
-    AuthServ.loadUserServ(this.props.match.user.id)
-      .then(user => {
-        this.props.history.push(`/user/${user._id}`);
-      })
-      .catch(error => {
-        console.log("loading user error:", error);
-      });
-  }
-
   render() {
+    const user = this.state.user;
     return (
       <div>
         <Navbar bg="dark">
@@ -45,19 +56,15 @@ export default class NavBar extends Component {
                   Log Out
                 </Button>
               </Form>
-              <Form>
-                <Button type="submit" href="/blog">
-                  Blog
-                </Button>
-              </Form>
-              <Form>
-                <Button type="submit" href="/recipe">
-                  Recipes
-                </Button>
-              </Form>
-              <Form onSubmit={this.profilePage}>
-                <Button type="submit">Profile Page</Button>
-              </Form>
+              <Link className="btn btn-primary" to={"/blog"}>
+                Blog
+              </Link>
+              <Link className="btn btn-primary" to={"/recipe"}>
+                Recipes
+              </Link>
+              <Link className="btn btn-primary" to={"/user"}>
+                Profile
+              </Link>
             </Row>
           </Navbar.Brand>
         </Navbar>

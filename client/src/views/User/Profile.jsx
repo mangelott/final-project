@@ -11,13 +11,14 @@ export default class Profile extends Component {
     this.state = {
       user: ""
     };
-    // console.log("this.state", this.props);
+    console.log("this.state", this.props);
     this.loadUser = this.loadUser.bind(this);
   }
 
   loadUser() {
-    AuthServ.loadUserServ(this.props.match.params.id)
+    AuthServ.loadUserServ()
       .then(user => {
+        console.log("props", this.props);
         this.setState({
           user
         });
@@ -39,7 +40,7 @@ export default class Profile extends Component {
     const user = this.state.user;
     return (
       <div>
-        <Link to={`/profile/${this.props.match.params.id}/edit`}>
+        <Link to={`/user/${this.props.match.params.id}/edit`}>
           <Button>Edit</Button>
         </Link>
         <Container>

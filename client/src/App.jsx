@@ -38,7 +38,7 @@ export default class App extends Component {
             <Route path="/" exact component={SingInView} />
             <Route path="/homepage" component={HomeView} />
             <Route path="/signup" component={SignUpView} />
-            <Route path="/user/:id" exatc component={ProfileView} />
+            <Route path="/user" exact component={ProfileView} />
             <Route path="/user/:id/edit" component={EditProfileView} />
             <Route path="/recipe" exact component={RecipeView} />
             <Route path="/recipe/create" component={CreateRecipeView} />

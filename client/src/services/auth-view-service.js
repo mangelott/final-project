@@ -34,7 +34,7 @@ export const signInViewServ = ({ email, password }) =>
 export const loadUserServ = id =>
   new Promise((resolve, reject) => {
     authAPI
-      .get("/loggedin/" + id)
+      .get("/loggedin")
       .then(response => {
         console.log("USER SERVICE RESPONSE", response.data.user);
 
