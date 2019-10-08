@@ -2,6 +2,9 @@
   "name": "react-blogging",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "^12.8.0"
+  },
   "scripts": {
     "start": "node ./server",
     "dev": "nodemon ./server",
