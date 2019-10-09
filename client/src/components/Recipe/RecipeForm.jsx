@@ -35,6 +35,7 @@ export default class RecipeForm extends Component {
               placeholder="Recipe Title"
               value={this.props.value.title}
               onChange={this.onValueChange}
+              className="text-capitalize"
             />
           </Form.Group>
           <Form.Group>
@@ -45,6 +46,7 @@ export default class RecipeForm extends Component {
               placeholder="Ingredients"
               value={this.props.value.ingredients}
               onChange={this.onValueChange}
+              className="text-capitalize"
             />
           </Form.Group>
           <Form.Group>
@@ -55,6 +57,7 @@ export default class RecipeForm extends Component {
               placeholder="Directions"
               value={this.props.value.directions}
               onChange={this.onValueChange}
+              className="text-capitalize"
             />
           </Form.Group>
           <Form.Group>
