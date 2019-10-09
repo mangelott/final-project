@@ -18,7 +18,7 @@ export default class Post extends Component {
   loadPost() {
     PostServ.loadPostServ(this.props.match.params.id)
       .then(blogging => {
-        console.log(">>>", blogging);
+        // console.log(">>>", blogging);
         this.setState({
           blogging
         });
@@ -35,7 +35,7 @@ export default class Post extends Component {
         this.props.history.push("/blog");
       })
       .catch(error => {
-        console.log("error when delete", error);
+        console.log(error);
       });
   }
 
@@ -75,15 +75,14 @@ export default class Post extends Component {
                     <Link to={`/blog/${this.props.match.params.id}/edit`}>
                       <Button variant="primary">Edit Post</Button>
                     </Link>
-                    <Link>
-                      <Button variant="primary" onClick={this.deletePost}>
-                        Delete the post
-                      </Button>
-                    </Link>
+                    {/* <Link to={"/blog"} className="primary"> */}
+                    <Button variant="primary" onClick={this.deletePost}>
+                      Delete the post
+                    </Button>
+                    {/* </Link> */}
                   </div>
                 </div>
               </Card.Body>
-              {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
             </Card>
           </Container>
         </div>

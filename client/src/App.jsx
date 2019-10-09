@@ -5,12 +5,13 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
+import HomeView from "./views/Home/HomeView";
 
 //-------------------------- USER VIEWS
 import SingInView from "./views/User/SignIn";
-import HomeView from "./views/User/Home";
 import SignUpView from "./views/User/SingUp";
 import ProfileView from "./views/User/Profile";
+import EditProfileView from "./views/User/EditProfile";
 
 //--------------------------RECIPE VIEWS
 import HomeRecipeView from "./views/Recipe/Home";
@@ -38,7 +39,8 @@ export default class App extends Component {
             <Route path="/" exact component={SingInView} />
             <Route path="/home" component={HomeView} />
             <Route path="/signup" component={SignUpView} />
-            <Route path="/user/:id" component={ProfileView} />
+            <Route path="/user" exact component={ProfileView} />
+            <Route path="/user/:id/edit" component={EditProfileView} />
             <Route path="/recipe" exact component={HomeRecipeView} />
             <Route path="/recipe/create" exact component={CreateRecipeView} />
             <Route path="/recipe/:id" exact component={ViewRecipe} />

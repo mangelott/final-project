@@ -33,7 +33,7 @@ export default class SingIn extends Component {
       password
     })
       .then(user => {
-        this.props.history.push(`/user/${user._id}`);
+        this.props.history.push("/user");
       })
       .catch(error => {
         console.log("uv got an error trying to login", error);

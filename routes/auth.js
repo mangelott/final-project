@@ -15,13 +15,17 @@ const uploadController = require("./../controllers/auth/upload");
 
 router.post("/signup", signUpControl);
 
-router.get("/loggedin/:userId", loggedInControl);
+router.get("/loggedin", loggedInControl);
 
 router.post("/signin", signInControl);
 
 router.post("/logout", routeGuardMiddleware(true), logOutControl);
 
-router.post("/edit", routeGuardMiddleware(true), editController);
+router.patch(
+  "/edit/:id",
+  uploadImageMiddleware.single("image"),
+  editController
+);
 
 router.post(
   "/upload",

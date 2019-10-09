@@ -6,14 +6,12 @@ const blogAPI = axios.create({
 
 export const createPostServ = data =>
   new Promise((resolve, reject) => {
-    console.log(data);
     const formData = new FormData();
     for (let prop in data) formData.append(prop, data[prop]);
     blogAPI
       .post("/blog/create", formData)
       .then(response => {
         resolve(response.data.data.blogging);
-        console.log(response);
       })
       .catch(error => {
         console.log("SERVICE ERROR", error);
@@ -60,7 +58,7 @@ export const editPostServ = (id, updatedPost) =>
       });
   });
 
-export const removePostServ = id => {
+export const removePostServ = id =>
   new Promise((resolve, reject) => {
     blogAPI
       .delete(`/blog/${id}`)
@@ -69,6 +67,6 @@ export const removePostServ = id => {
       })
       .catch(error => {
         reject(error);
+        console.log("eeeeeeeerror", error);
       });
   });
-};

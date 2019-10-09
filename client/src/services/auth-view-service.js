@@ -31,13 +31,25 @@ export const signInViewServ = ({ email, password }) =>
       });
   });
 
-export const loadUserServ = id =>
+export const loadUserServ = (id, data) =>
+  new Promise((resolve, reject) => {
+    const formData = new FormData();
+    for (let prop in data) formData.append(prop, data[prop]);
+    authAPI
+      .get("/loggedin")
+      .then(response => {
+        resolve(response.data.user);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+
+export const editUserServ = (id, updatedUser) =>
   new Promise((resolve, reject) => {
     authAPI
-      .get("/loggedin/" + id)
+      .patch(`/edit/${id}`, updatedUser)
       .then(response => {
-        console.log("USER SERVICE RESPONSE", response.data.user);
-
         resolve(response.data.user);
       })
       .catch(error => {
