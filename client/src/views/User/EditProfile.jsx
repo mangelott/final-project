@@ -6,37 +6,34 @@ export default class EditProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {
-        username: "",
-        email: "",
-        password: "",
-        image: "",
-        about: ""
-      }
+      username: "",
+      email: "",
+      password: "",
+      image: "",
+      about: ""
     };
     this.onFormValueChange = this.onFormValueChange.bind(this);
     this.handleChangeImage = this.handleChangeImage.bind(this);
+    this.editProfile = this.editProfile.bind(this);
   }
 
   componentDidMount() {
-    const id = this.state.user._id;
+    const id = this.props.match.params.id;
     AuthServ.loadUserServ(id).then(user => {
+      console.log("user>>>>>>>>>>>>>>", user);
       this.setState({
-        user: {
-          ...user
-        }
+        ...user
       });
     });
   }
 
   editProfile(event) {
     event.preventDefault();
-    const id = this.state.user._id;
-    const user = this.state.user;
+    const id = this.props.match.params.id;
+    const user = this.state;
     AuthServ.editUserServ(id, user)
       .then(user => {
         this.props.history.push("/user");
-        console.log("userrrrr", user);
       })
       .catch(error => {
         console.log("error editing", error);
@@ -44,32 +41,29 @@ export default class EditProfile extends Component {
   }
 
   onFormValueChange(event) {
+    event.preventDefault();
     const name = event.target.name;
     const value = event.target.value;
 
     this.setState({
-      user: {
-        ...this.state.user,
-        [name]: value
-      }
+      ...this.state,
+      //about: event.target.value,
+      [name]: value
     });
-    console.log("this is it", this.state.user.username);
   }
 
   handleChangeImage = event => {
     this.setState({
-      user: {
-        ...this.state.user,
-        image: event.target.files[0]
-      }
+      ...this.state,
+      image: event.target.files[0]
     });
   };
   render() {
-    const user = this.state.user;
+    const user = this.state;
     return (
       <div>
         <Container>
-          <Form onSubmit={this.onSignUpSubmit}>
+          <Form onSubmit={this.editProfile}>
             <Form.Group>
               <Form.Label>Email</Form.Label>
               <Form.Control
@@ -107,7 +101,7 @@ export default class EditProfile extends Component {
                 as="textarea"
                 rows="3"
                 name="about"
-                type="text"
+                // type="text"
                 value={user.about}
                 onChange={this.onFormValueChange}
               />

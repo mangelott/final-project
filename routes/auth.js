@@ -21,7 +21,11 @@ router.post("/signin", signInControl);
 
 router.post("/logout", routeGuardMiddleware(true), logOutControl);
 
-router.patch("/edit", uploadImageMiddleware.single("image"), editController);
+router.patch(
+  "/edit/:id",
+  uploadImageMiddleware.single("image"),
+  editController
+);
 
 router.post(
   "/upload",

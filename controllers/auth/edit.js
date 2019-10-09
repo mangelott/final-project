@@ -16,7 +16,9 @@ module.exports = (req, res, next) => {
     },
     {
       ...(username && { username }),
-      ...(email && { email })
+      ...(email && { email }),
+      ...(about && { about }),
+      ...(image && { image })
     },
     { new: true }
   )

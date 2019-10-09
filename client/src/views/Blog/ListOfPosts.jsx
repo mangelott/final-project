@@ -13,7 +13,6 @@ export default class Blog extends Component {
       posts: []
     };
   }
-  npm;
 
   componentDidMount() {
     PostServ.postsServ()
@@ -30,17 +29,10 @@ export default class Blog extends Component {
   render() {
     return (
       <div className="mt-3 mx-auto">
-        {/* <Container> */}
-        {/* <Card>
-            <Row> */}
-        <Button type="submit" href="/blog/create">
-          Create a post
-        </Button>
-        {/* </Row>
-          </Card> */}
-        {/* </Container> */}
-        <Container /* className="d-flex justify-content-sm-around align-items-stretch" */
-        >
+        <Container>
+          <Button type="submit" href="/blog/create">
+            Create a post
+          </Button>
           <Row>
             {this.state.posts.map(blogging => (
               <Link key={blogging._id} to={`/blog/${blogging._id}`}>

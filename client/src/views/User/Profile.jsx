@@ -11,14 +11,13 @@ export default class Profile extends Component {
     this.state = {
       user: ""
     };
-    console.log("this.state", this.props);
     this.loadUser = this.loadUser.bind(this);
   }
 
   loadUser() {
     AuthServ.loadUserServ()
       .then(user => {
-        console.log("props", this.props);
+        console.log("profile user>>>>>>>>", user);
         this.setState({
           user
         });
@@ -28,10 +27,6 @@ export default class Profile extends Component {
       });
   }
 
-  // deleteUser() {
-  //   const id = this.props.match.params.id;
-  // }
-
   componentDidMount() {
     this.loadUser();
   }
@@ -40,8 +35,8 @@ export default class Profile extends Component {
     const user = this.state.user;
     return (
       <div>
-        <Link to={`/user/${user._id}/edit`}>
-          <Button>Edit</Button>
+        <Link className="btn btn-primary" to={`/user/${user._id}/edit`}>
+          Edit
         </Link>
         <Container>
           <Card className="border-0" style={{ width: "300px" }}>
@@ -52,6 +47,7 @@ export default class Profile extends Component {
 
           <h1>{user.username}'s Profile</h1>
           <span className="text-muted">{user.email}</span>
+          <p>{user.about}</p>
         </Container>
       </div>
     );

@@ -45,19 +45,18 @@ export const loadUserServ = (id, data) =>
       });
   });
 
-export const editUserServ = (id, updatedUser) => {
+export const editUserServ = (id, updatedUser) =>
   new Promise((resolve, reject) => {
     authAPI
-      .patch("/edit", updatedUser)
+      .patch(`/edit/${id}`, updatedUser)
       .then(response => {
         resolve(response.data.user);
       })
       .catch(error => {
-        console.log("ohhhh error", error);
         reject(error);
       });
   });
-};
+
 export const logOutService = () =>
   new Promise((resolve, reject) => {
     authAPI
