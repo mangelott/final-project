@@ -15,7 +15,8 @@ export default class FindRecipes extends Component {
     ServiceRecipe.listRecipes()
       .then(items => {
         console.log("itemssss", items);
-        const randomIndex = Math.floor(Math.random() * items.length + 1);
+        const randomIndex = Math.floor(Math.random() * items.length) - 1;
+        console.log("IS IT RANDOM", randomIndex);
         this.setState({
           items: items[randomIndex]
         });
