@@ -34,11 +34,7 @@ export default class Blog extends Component {
               <Row>
                 <Col>
                   <Card className="mt-4 border-0 rounded-lg text-white">
-                    <Card.Img
-                      // className="purple-filter"
-                      src={blogging.image}
-                      alt="Card image"
-                    />
+                    <Card.Img src={blogging.image} alt={blogging._id} />
                     <Card.ImgOverlay className="purple-filter">
                       <Card.Title>{blogging.title}</Card.Title>
                     </Card.ImgOverlay>

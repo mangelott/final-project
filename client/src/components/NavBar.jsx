@@ -49,7 +49,9 @@ export default class NavBar extends Component {
         <Navbar bg="dark">
           <Navbar.Brand>
             <Row>
-              <h2>Happy Cure</h2>
+              <Link to={"/home"}>
+                <h2>Happy Cure</h2>
+              </Link>
               <Link
                 className="btn btn-primary"
                 to={"/"}

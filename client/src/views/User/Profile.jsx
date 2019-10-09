@@ -3,7 +3,7 @@ import * as AuthServ from "./../../services/auth-view-service";
 
 import { Link } from "react-router-dom";
 
-import { Container, Button, Card, Figure } from "react-bootstrap/";
+import { Container, Card, Figure } from "react-bootstrap/";
 
 export default class Profile extends Component {
   constructor(props) {

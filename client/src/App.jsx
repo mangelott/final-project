@@ -5,10 +5,10 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
+import HomeView from "./views/Home/HomeView";
 
 //-------------------------- USER VIEWS
 import SingInView from "./views/User/SignIn";
-import HomeView from "./views/User/Home";
 import SignUpView from "./views/User/SingUp";
 import ProfileView from "./views/User/Profile";
 import EditProfileView from "./views/User/EditProfile";
