@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+
 import { Dropdown } from "react-bootstrap";
 export default class TodoInput extends Component {
   render() {
-    const { item, handleChange } = this.props;
+    const { item, handleChange, performSearch, query } = this.props;
     return (
       <div className="card card-body my-3">
         <form>
@@ -16,8 +17,8 @@ export default class TodoInput extends Component {
               type="text"
               className="form-control text-capitalize"
               placeholder="search a recipe item"
-              value={item}
-              onChange={handleChange}
+              value={query}
+              onChange={event => performSearch(event.target.value)}
             ></input>
           </div>
           <Dropdown className="d-flex flex-column align-items-center m-3">

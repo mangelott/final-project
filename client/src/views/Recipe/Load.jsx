@@ -62,7 +62,7 @@ export default class Load extends Component {
     return (
       <div className="d-flex flex-column align-items-center m-3">
         <Card style={{ width: "20rem" }}>
-          <Card.Img variant="top" src={recipe.image} alt="Image" fluid />
+          <Card.Img variant="top" src={recipe.image} alt="Image" />
           <Card.Body>
             <Card.Text>
               <b>{recipe.title}</b>
