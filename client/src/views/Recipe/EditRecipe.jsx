@@ -32,7 +32,7 @@ export default class editRecipe extends Component {
         });
       })
       .catch(error => {
-        console.log(error); // ERROR HERE <<<<<<<---------------------------
+        console.log(error);
       });
   }
 
