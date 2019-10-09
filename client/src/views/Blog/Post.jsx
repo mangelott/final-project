@@ -55,9 +55,9 @@ export default class Post extends Component {
     const post = this.state.blogging;
     return (
       (post && (
-        <div>
+        <div className="border-0">
           <Container>
-            <Card className="text-center">
+            <Card className="text-center border-0 pb-5 mb-3">
               <Card.Body>
                 <Card.Img variant="top" src={post.image} />
                 <div className="pt-2">
@@ -66,20 +66,21 @@ export default class Post extends Component {
                     {post.subtitle}
                   </span>
                   <Card.Text
-                    className="text-justify"
+                    className="text-box mt-2"
                     sytle={{ height: "100px" }}
                   >
                     {post.text}
                   </Card.Text>
                   <div className="d-flex justify-content-around">
-                    <Link to={`/blog/${this.props.match.params.id}/edit`}>
-                      <Button variant="primary">Edit Post</Button>
+                    <Link
+                      className="btn btn-primary"
+                      to={`/blog/${this.props.match.params.id}/edit`}
+                    >
+                      Edit Post
                     </Link>
-                    {/* <Link to={"/blog"} className="primary"> */}
                     <Button variant="primary" onClick={this.deletePost}>
                       Delete the post
                     </Button>
-                    {/* </Link> */}
                   </div>
                 </div>
               </Card.Body>

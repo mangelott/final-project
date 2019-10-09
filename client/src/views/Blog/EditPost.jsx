@@ -67,7 +67,7 @@ export default class EditPost extends Component {
 
   render() {
     return (
-      <div>
+      <div className="mt-4 pb-5">
         <Container>
           <Form onSubmit={this.editPost}>
             <Form.Group>

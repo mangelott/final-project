@@ -41,7 +41,6 @@ export default class index extends Component {
         this.setState({
           items
         });
-        // console.log("recipe:", this.state);
       })
       .catch(error => {
         console.log(error);

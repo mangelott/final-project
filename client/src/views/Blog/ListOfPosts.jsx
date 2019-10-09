@@ -28,7 +28,7 @@ export default class Blog extends Component {
   }
   render() {
     return (
-      <div className="mt-3 mx-auto">
+      <div className="mt-4 pb-5 mx-auto">
         <Container>
           <Button type="submit" href="/blog/create">
             Create a post

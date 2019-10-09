@@ -4,7 +4,8 @@ import "./App.css";
 
 import { Switch, Route } from "react-router-dom";
 
-import NavBar from "./components/NavBar";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import HomeView from "./views/Home/HomeView";
 
 //-------------------------- USER VIEWS
@@ -32,9 +33,11 @@ import CatchAllView from "./views/CatchAll";
 export default class App extends Component {
   render() {
     return (
-      <div className="App">
-        <NavBar />
-        <div>
+      <div className="App ">
+        <div className="header-style mb-4 pb-3">
+          <Header />
+        </div>
+        <div className="content-border content-style mt-5 pt-3">
           <Switch>
             <Route path="/" exact component={SingInView} />
             <Route path="/home" component={HomeView} />
@@ -52,6 +55,9 @@ export default class App extends Component {
             <Route path="/error/:code" component={ErrorView} />
             <Route path="/" component={CatchAllView} />
           </Switch>
+        </div>
+        <div className="footer-style">
+          <Footer />
         </div>
       </div>
     );
