@@ -28,13 +28,19 @@ export default class Blog extends Component {
   render() {
     return (
       <div>
-        <Container className="mb-4" style={{ width: "18rem" }}>
+        <Container className="mb-4" style={{ width: "22rem" }}>
           {this.state.posts.map(blogging => (
             <Link key={blogging._id} to={`/blog/${blogging._id}`}>
               <Row>
                 <Col>
-                  <Card className="mt-4 border-0 rounded-lg text-white">
-                    <Card.Img src={blogging.image} alt={blogging._id} />
+                  <Card
+                    style={{
+                      widht: "22rem",
+                      height: "10em",
+                      backgroundImage: `url(${blogging.image})`
+                    }}
+                    className="mt-4 border-0 rounded-lg text-white component-image"
+                  >
                     <Card.ImgOverlay className="purple-filter">
                       <Card.Title>{blogging.title}</Card.Title>
                     </Card.ImgOverlay>

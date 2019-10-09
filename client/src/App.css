@@ -37,3 +37,9 @@
   -moz-box-shadow: inset 0px -112px 137px 15px rgba(126, 70, 185, 0.5);
   box-shadow: inset 0px -112px 137px 15px rgba(126, 70, 185, 0.5);
 }
+
+.component-image {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
