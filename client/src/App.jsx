@@ -145,8 +145,21 @@ export default class App extends Component {
                   <CreateRecipeView user={this.state.user} {...props} />
                 )}
               />
-              <Route path="/recipe/:id" exact component={ViewRecipe} />
-              <Route path="/recipe/:id/edit" component={EditRecipeView} />
+              <ProtectedRoute
+                path="/recipe/:id"
+                exact
+                verify={this.verifyUserLoggedIn}
+                render={props => (
+                  <ViewRecipe user={this.state.user} {...props} />
+                )}
+              />
+              <ProtectedRoute
+                path="/recipe/:id/edit"
+                verify={this.verifyUserLoggedIn}
+                render={props => (
+                  <EditRecipeView user={this.state.user} {...props} />
+                )}
+              />
               <ProtectedRoute
                 path="/blog"
                 exact
@@ -186,10 +199,7 @@ export default class App extends Component {
           )}
         </div>
         <div className="footer-style">
-          <ProtectedRoute
-            verify={this.verifyUserLoggedIn}
-            render={props => <Footer user={this.state.user} {...props} />}
-          />
+          <Footer />
         </div>
       </div>
     );
