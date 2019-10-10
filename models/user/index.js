@@ -19,7 +19,8 @@ const schema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["Hospital", "Patient"]
+    enum: ["Hospital", "Patient"],
+    default: "Patient"
   },
   image: {
     type: String,

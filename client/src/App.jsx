@@ -160,8 +160,19 @@ export default class App extends Component {
                   <CreatePostView user={this.state.user} {...props} />
                 )}
               />
-              <Route path="/blog/:id" exact component={PostView} />
-              <Route path="/blog/:id/edit" component={EditPostView} />
+              <ProtectedRoute
+                path="/blog/:id"
+                exact
+                verify={this.verifyUserLoggedIn}
+                render={props => <PostView user={this.state.user} {...props} />}
+              />
+              <ProtectedRoute
+                path="/blog/:id/edit"
+                verify={this.verifyUserLoggedIn}
+                render={props => (
+                  <EditPostView user={this.state.user} {...props} />
+                )}
+              />
               <ProtectedRoute
                 path="/videos"
                 verify={this.verifyUserLoggedIn}
@@ -175,7 +186,10 @@ export default class App extends Component {
           )}
         </div>
         <div className="footer-style">
-          <Footer />
+          <ProtectedRoute
+            verify={this.verifyUserLoggedIn}
+            render={props => <Footer user={this.state.user} {...props} />}
+          />
         </div>
       </div>
     );

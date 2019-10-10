@@ -71,22 +71,27 @@ export default class Post extends Component {
                     {post.text}
                   </Card.Text>
                   <div className="d-flex justify-content-around">
-                    <Link
-                      className="btn  purple"
-                      to={`/blog/${this.props.match.params.id}/edit`}
-                    >
-                      Edit Post
-                    </Link>
-                    <Button onClick={this.deletePost} className="purple">
-                      Delete the post
-                    </Button>
+                    {this.props.user.role === "Hospital" && (
+                      <Link
+                        className="btn  purple"
+                        to={`/blog/${this.props.match.params.id}/edit`}
+                      >
+                        Edit Post
+                      </Link>
+                    )}
+                    {this.props.user.role === "Hospital" && (
+                      <Button onClick={this.deletePost} className="purple">
+                        Delete the post
+                      </Button>
+                    )}
                   </div>
                 </div>
               </Card.Body>
             </Card>
           </Container>
         </div>
-      )) || <div></div>
+      )) ||
+      null
     );
   }
 }
