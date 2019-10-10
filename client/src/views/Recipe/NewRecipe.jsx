@@ -64,100 +64,107 @@ export default class newRecipe extends Component {
 
   render() {
     return (
-      <Container>
-        <Form onSubmit={this.onFormSubmit}>
-          <Form.Group>
-            <Form.Label>Title</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Title"
-              name="title"
-              value={this.state.title}
-              onChange={this.handleChangeCreateRecipe}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Dish Type</Form.Label>
-            <Form.Control
-              as="select"
-              placeholder="DishType"
-              name="dishType"
-              value={this.state.dishType}
-              onChange={this.handleChangeCreateRecipe}
-            >
-              <option value="" disabled>
-                Choose the type
-              </option>
-              {["Breakfast", "Dish", "Snack", "Drink", "Dessert", "Other"].map(
-                item => (
+      <div className="mb-5 pb-5">
+        <Container>
+          <Form onSubmit={this.onFormSubmit}>
+            <Form.Group>
+              <Form.Label>Title</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Title"
+                name="title"
+                value={this.state.title}
+                onChange={this.handleChangeCreateRecipe}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Dish Type</Form.Label>
+              <Form.Control
+                as="select"
+                placeholder="DishType"
+                name="dishType"
+                value={this.state.dishType}
+                onChange={this.handleChangeCreateRecipe}
+              >
+                <option value="" disabled>
+                  Choose the type
+                </option>
+                {[
+                  "Breakfast",
+                  "Dish",
+                  "Snack",
+                  "Drink",
+                  "Dessert",
+                  "Other"
+                ].map(item => (
                   <option key={item} value={item}>
                     {item}
                   </option>
-                )
-              )}
-            </Form.Control>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Ingredients</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Ingredients"
-              name="ingredients"
-              value={this.state.ingredients}
-              onChange={this.handleChangeCreateRecipe}
-            />
-          </Form.Group>
+                ))}
+              </Form.Control>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Ingredients</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Ingredients"
+                name="ingredients"
+                value={this.state.ingredients}
+                onChange={this.handleChangeCreateRecipe}
+              />
+            </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Directions</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Directions"
-              name="directions"
-              value={this.state.directions}
-              onChange={this.handleChangeCreateRecipe}
-            />
-          </Form.Group>
+            <Form.Group>
+              <Form.Label>Directions</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Directions"
+                name="directions"
+                value={this.state.directions}
+                onChange={this.handleChangeCreateRecipe}
+              />
+            </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Duration</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Duration"
-              name="duration"
-              value={this.duration}
-              onChange={this.handleChangeCreateRecipe}
-            />
-          </Form.Group>
+            <Form.Group>
+              <Form.Label>Duration</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Duration"
+                name="duration"
+                value={this.duration}
+                onChange={this.handleChangeCreateRecipe}
+              />
+            </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Calories</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Calories"
-              name="calories"
-              value={this.state.calories}
-              onChange={this.handleChangeCreateRecipe}
-            />
-          </Form.Group>
+            <Form.Group>
+              <Form.Label>Calories</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Calories"
+                name="calories"
+                value={this.state.calories}
+                onChange={this.handleChangeCreateRecipe}
+              />
+            </Form.Group>
 
-          <Form.Group>
-            <label htmlFor="image" className="file-input">
-              <span>Profile Photo</span>
-            </label>
-            <PrettyFileInput
-              id="image-input"
-              value={this.state.image}
-              onChange={this.handleChangeImage}
-              name="image"
-            />
-          </Form.Group>
+            <Form.Group>
+              <label htmlFor="image" className="file-input">
+                <span>Profile Photo</span>
+              </label>
+              <PrettyFileInput
+                id="image-input"
+                value={this.state.image}
+                onChange={this.handleChangeImage}
+                name="image"
+              />
+            </Form.Group>
 
-          <Button type="submit" className="purple">
-            Submit
-          </Button>
-        </Form>
-      </Container>
+            <Button type="submit" className="purple">
+              Submit
+            </Button>
+          </Form>
+        </Container>
+      </div>
     );
   }
 }

@@ -7,8 +7,8 @@ import Image from "react-bootstrap/Image";
 export default class Header extends Component {
   render() {
     return (
-      <div className="d-flex justify-content-around ">
-        <div className="mt-3">
+      <div className="d-flex space-between ml-4">
+        <div className="mt-4">
           <Link to={"/home"}>
             {
               <i className=" mx-2 purple">
@@ -19,6 +19,7 @@ export default class Header extends Component {
           <Image
             src="/image/happy.png"
             style={{ width: "100px", height: "50px" }}
+            className="ml-5"
           />
         </div>
       </div>

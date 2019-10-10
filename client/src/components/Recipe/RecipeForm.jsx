@@ -36,6 +36,7 @@ export default class RecipeForm extends Component {
               value={this.props.value.title}
               onChange={this.onValueChange}
               className="text-capitalize"
+              required
             />
           </Form.Group>
           <Form.Group>
@@ -46,6 +47,7 @@ export default class RecipeForm extends Component {
               value={this.props.value.dishType}
               disabled="disabled"
               className="text-capitalize"
+              required
             />
           </Form.Group>
           <Form.Group>
@@ -57,6 +59,7 @@ export default class RecipeForm extends Component {
               value={this.props.value.ingredients}
               onChange={this.onValueChange}
               className="text-capitalize"
+              required
             />
           </Form.Group>
           <Form.Group>
@@ -68,6 +71,7 @@ export default class RecipeForm extends Component {
               value={this.props.value.directions}
               onChange={this.onValueChange}
               className="text-capitalize"
+              required
             />
           </Form.Group>
           <Form.Group>
@@ -78,6 +82,7 @@ export default class RecipeForm extends Component {
               placeholder="Duration"
               value={this.props.value.duration}
               onChange={this.onValueChange}
+              required
             />
           </Form.Group>
           <Form.Group>
@@ -88,9 +93,10 @@ export default class RecipeForm extends Component {
               placeholder="Calories"
               value={this.props.value.calories}
               onChange={this.onValueChange}
+              required
             />
           </Form.Group>
-          <Button type="submit" className="purple">
+          <Button type="submit" className="purple" required>
             Submit
           </Button>
         </Form>

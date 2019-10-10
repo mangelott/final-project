@@ -8,18 +8,26 @@ const recipeSchema = new mongoose.Schema({
   },
   dishType: {
     type: String,
-    enum: ["Breakfast", "Dish", "Snack", "Drink", "Dessert", "Other"]
+    enum: ["Breakfast", "Dish", "Snack", "Drink", "Dessert", "Other"],
+    required: true
   },
-  ingredients: String,
-  directions: String,
+  ingredients: {
+    type: String,
+    required: true
+  },
+  directions: {
+    type: String,
+    required: true
+  },
   duration: {
     type: Number,
-    min: 0
+    min: 0,
+    required: true
   },
   calories: Number,
   image: {
-    type: String
-    // required: true
+    type: String,
+    required: true
   }
 }
 );
