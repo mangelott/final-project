@@ -156,7 +156,9 @@ export default class newRecipe extends Component {
             />
           </Form.Group>
 
-          <Button type="submit">Submit</Button>
+          <Button type="submit" className="purple">
+            Submit
+          </Button>
         </Form>
       </Container>
     );

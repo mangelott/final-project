@@ -99,6 +99,9 @@ export default class SingUp extends Component {
                 </p>
               </div>
             )}
+            <Button variant="primary" type="submit" className="purple">
+              Sign Up
+            </Button>
             <Form.Text className="text-muted">
               If you already has an account go to <Link to="/">Sign In</Link>
             </Form.Text>

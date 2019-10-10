@@ -94,7 +94,7 @@ export default class CreatePost extends Component {
                 onChange={this.onChangeValue}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" className="purple">
               Post
             </Button>
           </Form>

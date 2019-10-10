@@ -110,7 +110,7 @@ export default class EditPost extends Component {
                 onChange={this.onFormValueChange}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" className="purple">
               Edit
             </Button>
           </Form>
