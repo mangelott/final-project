@@ -1,0 +1,13 @@
+.input--pretty {
+  input {
+    display: none;
+  }
+}
+
+.input__trigger {
+  display: inline-flex;
+  background-color: rgb(126, 70, 185);
+  color: white;
+  padding: 0.5em;
+  cursor: pointer;
+}

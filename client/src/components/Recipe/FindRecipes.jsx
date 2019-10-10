@@ -29,7 +29,6 @@ export default class FindRecipes extends Component {
   }
   render() {
     const recipe = this.state.items;
-    console.log("recipe>>>", recipe);
     return (
       <div>
         <Link to={"/recipe"}>

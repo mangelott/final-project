@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as PostServ from "./../../services/blog-view-service";
+import PrettyFileInput from "./../../components/PrettyFileInput";
 
 import { Container, Form, Button } from "react-bootstrap";
 
@@ -76,11 +77,17 @@ export default class CreatePost extends Component {
               <label htmlFor="image" className="file-input">
                 Upload
               </label>
-              <Form.Control
+              {/* <Form.Control
                 id="post-profile"
                 type="file"
                 name="image"
                 onChange={this.handleChangeImage}
+              /> */}
+              <PrettyFileInput
+                id="image-input"
+                value={this.state.image}
+                onChange={this.handleChangeImage}
+                name="image"
               />
             </Form.Group>
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 
 import * as Service from "../../services/recipe-view-service";
+import PrettyFileInput from "./../../components/PrettyFileInput";
 
 export default class newRecipe extends Component {
   constructor(props) {
@@ -16,8 +17,6 @@ export default class newRecipe extends Component {
       image: ""
     };
     this.onFormSubmit = this.onFormSubmit.bind(this);
-
-    // this.onFileChange = this.onFileChange.bind(this);
   }
 
   handleChangeCreateRecipe = event => {
@@ -148,11 +147,11 @@ export default class newRecipe extends Component {
             <label htmlFor="image" className="file-input">
               <span>Profile Photo</span>
             </label>
-            <Form.Control
-              id="recipe-profile"
-              type="file"
-              name="image"
+            <PrettyFileInput
+              id="image-input"
+              value={this.state.image}
               onChange={this.handleChangeImage}
+              name="image"
             />
           </Form.Group>
 
