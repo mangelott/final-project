@@ -34,6 +34,7 @@ export default class SingUp extends Component {
       password
     })
       .then(user => {
+        //REVIEW!!!
         this.props.history.push(`/home`);
       })
       .catch(error => {
