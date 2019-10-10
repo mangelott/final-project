@@ -17,8 +17,13 @@ h5 {
   color: rgb(126, 70, 185);
 }
 
-.content-border {
-  background-color: #fff;
+/* * {
+  outline: 0.5px dashed red;
+} */
+
+.content-image {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding-top: 35vh;
   -webkit-border-top-left-radius: 50px;
   -webkit-border-top-right-radius: 50px;
   -moz-border-radius-topleft: 50px;
@@ -27,9 +32,18 @@ h5 {
   border-top-right-radius: 50px;
 }
 
-.content-style {
-  overflow: auto;
-  min-height: 90vh;
+.content-text {
+  background-color: white;
+  -webkit-border-top-left-radius: 50px;
+  -webkit-border-top-right-radius: 50px;
+  -moz-border-radius-topleft: 50px;
+  -moz-border-radius-topright: 50px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+content-border-image {
+  margin-top: 200px;
 }
 
 .text-box {

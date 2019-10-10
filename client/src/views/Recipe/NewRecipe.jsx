@@ -64,7 +64,7 @@ export default class newRecipe extends Component {
 
   render() {
     return (
-      <div className="mb-5 pb-5">
+      <div className="mb-5 pb-5 content-text mt-5 pt-5">
         <Container>
           <Form onSubmit={this.onFormSubmit}>
             <Form.Group>

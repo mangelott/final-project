@@ -96,7 +96,7 @@ export default class App extends Component {
         <div className="header-style mb-1 pb-3">
           <Header />
         </div>
-        <div className="content-border content-style mt-5 pt-5">
+        <div>
           {this.state.loaded && (
             <Switch>
               <ProtectedRoute

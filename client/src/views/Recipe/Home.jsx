@@ -75,23 +75,25 @@ export default class index extends Component {
     const performSearch = this.performSearch;
 
     return (
-      <div className="d-flex flex-column align-items-center m-3 mb-5">
-        <Link to="/recipe/create">
-          <button type="submit" className="btn btn-block purple mt-3">
-            New Recipe
-          </button>
-        </Link>
-        <RecipeInput
-          performSearch={performSearch}
-          query={this.query}
-          dishType={this.dishType}
-        />
-        <RecipeList
-          items={filtered}
-          loadAll={loadAll}
-          handleDelete={handleDelete}
-          filtered={filtered}
-        />
+      <div className="content-text">
+        <div className="d-flex flex-column align-items-center m-3 mb-5 mt-5 pt-5">
+          <Link to="/recipe/create">
+            <button type="submit" className="btn btn-block purple mt-3">
+              New Recipe
+            </button>
+          </Link>
+          <RecipeInput
+            performSearch={performSearch}
+            query={this.query}
+            dishType={this.dishType}
+          />
+          <RecipeList
+            items={filtered}
+            loadAll={loadAll}
+            handleDelete={handleDelete}
+            filtered={filtered}
+          />
+        </div>
       </div>
     );
   }

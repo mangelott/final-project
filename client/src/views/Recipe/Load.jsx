@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Container, Image } from "react-bootstrap";
 
 import * as Service from "./../../services/recipe-view-service";
 
@@ -60,27 +60,47 @@ export default class Load extends Component {
   render() {
     const recipe = this.state.recipe;
     return (
-      <div className="d-flex flex-column align-items-center m-3">
-        <Card style={{ width: "20rem" }}>
-          <Card.Img variant="top" src={recipe.image} alt="Image" />
-          <Card.Body>
-            <Card.Text>
-              <b>{recipe.title}</b>
-              <br></br>
-              {recipe.duration} minutes
-              <br></br>
-              {recipe.calories} calories
-            </Card.Text>
-            <Card.Text className="list-group-flush">
-              <b>Ingredients:</b>
-              <br></br>
-              {recipe.ingredients}
-              <br></br>
-              <b>Steps:</b>
-              <br></br> {recipe.directions}
-            </Card.Text>
-          </Card.Body>
-        </Card>
+      <div>
+        <div
+          className="content-image  mt-5 "
+          style={{
+            backgroundImage: `url(${recipe.image})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "100%"
+          }}
+        >
+          <div className=" text-center content-text ">
+            <h1>{recipe.title}</h1>
+            <p>{recipe.title}</p>
+            <p>{recipe.duration} minutes</p>
+            <p>{recipe.calories} calories</p>
+            <p>{recipe.ingredients}</p>
+            <p>{recipe.directions}</p>
+          </div>
+        </div>
+
+        {/* <div className="d-flex flex-column align-items-center m-3">
+          <Card>
+            {/* <Card.Img variant="top" src={recipe.image} alt="Image" /> */}
+        {/* <Card.Body>
+              <Card.Text>
+                {recipe.title}
+                <br></br>
+                {recipe.duration} minutes
+                <br></br>
+                {recipe.calories} calories
+              </Card.Text>
+              <Card.Text className="list-group-flush">
+                Ingredients:
+                <br></br>
+                {recipe.ingredients}
+                <br></br>
+                Steps:
+                <br></br> {recipe.directions}
+              </Card.Text>
+            </Card.Body>
+          </Card> */}
+        {/* </div>  */}
       </div>
     );
   }

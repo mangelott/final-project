@@ -73,7 +73,7 @@ export default class editRecipe extends Component {
 
   render() {
     return (
-      <div>
+      <div className="content-text mt-5 pt-5">
         <h3>Edit Recipe: {this.state.recipe.title}</h3>
         <RecipeForm
           value={this.state.recipe}
