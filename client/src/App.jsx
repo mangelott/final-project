@@ -4,8 +4,13 @@ import "./App.css";
 
 import { Switch, Route } from "react-router-dom";
 
+import * as AuthServ from "./services/auth-view-service";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
+import ProtectedRoute from "./components/ProtectedRoute";
+
 import HomeView from "./views/Home/HomeView";
 
 //-------------------------- USER VIEWS
@@ -35,31 +40,106 @@ import ErrorView from "./views/Error";
 import CatchAllView from "./views/CatchAll";
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+      loaded: false
+    };
+    this.loadUser = this.loadUser.bind(this);
+    this.changeUser = this.changeUser.bind(this);
+    this.verifyUserLoggedIn = this.verifyUserLoggedIn.bind(this);
+    this.verifyUserNotLoggedIn = this.verifyUserNotLoggedIn.bind(this);
+  }
+
+  componentDidMount() {
+    this.loadUser();
+  }
+
+  loadUser() {
+    AuthServ.loadUserServ()
+      .then(user => {
+        if (user) {
+          this.setState({
+            user
+          });
+        }
+        this.setState({
+          loaded: true
+        });
+      })
+      .catch(error => {
+        this.setState({
+          loaded: true
+        });
+        console.log("loading user error:", error);
+      });
+  }
+
+  verifyUserLoggedIn() {
+    return !!this.state.user;
+  }
+
+  verifyUserNotLoggedIn() {
+    return !this.state.user;
+  }
+
+  changeUser(user) {
+    this.setState({
+      user
+    });
+  }
+
   render() {
     return (
       <div className="App ">
-        <div className="header-style mb-4 pb-3">
+        <div className="header-style mb-1 pb-3">
           <Header />
         </div>
-        <div className="content-border content-style mt-5 pt-3">
-          <Switch>
-            <Route path="/" exact component={SingInView} />
-            <Route path="/home" component={HomeView} />
-            <Route path="/signup" component={SignUpView} />
-            <Route path="/user" exact component={ProfileView} />
-            <Route path="/user/:id/edit" component={EditProfileView} />
-            <Route path="/recipe" exact component={HomeRecipeView} />
-            <Route path="/recipe/create" exact component={CreateRecipeView} />
-            <Route path="/recipe/:id" exact component={ViewRecipe} />
-            <Route path="/recipe/:id/edit" component={EditRecipeView} />
-            <Route path="/blog" exact component={BlogView} />
-            <Route path="/blog/create" component={CreatePostView} />
-            <Route path="/blog/:id" exact component={PostView} />
-            <Route path="/blog/:id/edit" component={EditPostView} />
-            <Route path="/videos" component={VideosView} />
-            <Route path="/error/:code" component={ErrorView} />
-            <Route path="/" component={CatchAllView} />
-          </Switch>
+        <div className="content-border content-style mt-5 pt-5">
+          {this.state.loaded && (
+            <Switch>
+              <ProtectedRoute
+                path="/"
+                exact
+                verify={this.verifyUserNotLoggedIn}
+                redirectPath="/home"
+                render={props => (
+                  <SingInView changeUser={this.changeUser} {...props} />
+                )}
+              />
+              <Route path="/signup" component={SignUpView} />
+              <ProtectedRoute
+                path="/home"
+                verify={this.verifyUserLoggedIn}
+                redirectPath="/"
+                component={HomeView}
+              />
+              <Route
+                path="/user"
+                exact
+                render={props => (
+                  <ProfileView
+                    user={this.state.user}
+                    changeUser={this.changeUser}
+                    {...props}
+                  />
+                )}
+              />
+              <Route path="/user/:id/edit" component={EditProfileView} />
+              <Route path="/recipe" exact component={HomeRecipeView} />
+              <Route path="/recipe/create" exact component={CreateRecipeView} />
+              <Route path="/recipe/:id" exact component={ViewRecipe} />
+              <Route path="/recipe/:id/edit" component={EditRecipeView} />
+              <Route path="/blog" exact component={BlogView} />
+              <Route path="/blog/create" component={CreatePostView} />
+              <Route path="/blog/:id" exact component={PostView} />
+              <Route path="/blog/:id/edit" component={EditPostView} />
+              <Route path="/videos" component={VideosView} />
+              <Route path="/error/:code" component={ErrorView} />
+              <Route path="/" component={CatchAllView} />
+            </Switch>
+          )}
         </div>
         <div className="footer-style">
           <Footer />

@@ -12,6 +12,7 @@ const MongoStore = require("connect-mongo")(expressSession);
 const mongoose = require("mongoose");
 
 const deserializeUserMiddleware = require("./middleware/deserialize-user");
+const routeGuardMiddleware = require("./middleware/route-guard");
 
 const authRouter = require("./routes/auth");
 const recipeRouter = require("./routes/recipe");
@@ -41,8 +42,8 @@ app.use(
 app.use(deserializeUserMiddleware);
 
 app.use("/", authRouter);
-app.use("/", recipeRouter);
-app.use("/", blogRouter);
+app.use("/", routeGuardMiddleware(true), recipeRouter);
+app.use("/", routeGuardMiddleware(true), blogRouter);
 
 app.get("*", (req, res, next) => {
   res.sendFile(join(__dirname, "./client/build/index.html"));

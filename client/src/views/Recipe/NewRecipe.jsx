@@ -24,11 +24,9 @@ export default class newRecipe extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-    console.log(this.state);
   };
 
   handleChangeImage = event => {
-    console.log(event.target.files);
     this.setState({
       image: event.target.files[0]
     });

@@ -16,13 +16,11 @@ export default class index extends Component {
     this.performSearch = this.performSearch.bind(this);
   }
   handleChange = event => {
-    console.log("Here");
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
       [name]: value
     });
-    console.log(this.state.dishType);
   };
   handleDelete = id => {
     const filteredItems = this.state.items.filter(item => item._id !== id);
@@ -61,12 +59,14 @@ export default class index extends Component {
     const query = this.state.query;
     const dishType = this.state.dishType;
     const recipeList = this.state.items;
-    // const dishType = this.state.dishType;
-    // return recipeList.filter(
-    //   recipe =>
-    //     recipe.title.toLowerCase().includes(query.toLocaleLowerCase()) &&
-    //     recipe.dishType.toLowerCase().includes(dishType.toLocaleLowerCase())
-    // );
+
+    return recipeList.filter(
+      recipe =>
+        recipe.title.toLowerCase().includes(query.toLowerCase()) &&
+        (recipe.dishType
+          ? recipe.dishType.toLowerCase().includes(dishType.toLowerCase())
+          : true)
+    );
   }
   render() {
     const filtered = this.filteredRecipeList;
@@ -74,7 +74,7 @@ export default class index extends Component {
     const handleDelete = this.handleDelete;
     const performSearch = this.performSearch;
     return (
-      <div className="d-flex flex-column align-items-center m-3 ">
+      <div className="d-flex flex-column align-items-center m-3 mb-5">
         <Link to="/recipe/create">
           <button type="submit" className="btn btn-block purple mt-3">
             New Recipe

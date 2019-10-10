@@ -29,7 +29,7 @@ h5 {
 
 .content-style {
   overflow: auto;
-  min-height: 600px;
+  min-height: 90vh;
 }
 
 .text-box {
@@ -38,10 +38,10 @@ h5 {
 }
 .header-style {
   z-index: 1;
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   width: 100%;
-  height: 80px;
+  height: 50px;
   background-color: rgb(126, 70, 185);
 }
 
