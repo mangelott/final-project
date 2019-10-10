@@ -65,7 +65,7 @@ export default class SingIn extends Component {
                 onChange={this.onSignInChange}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" className="purple">
               Log in
             </Button>
             <Form.Text className="text-muted">

@@ -90,7 +90,9 @@ export default class RecipeForm extends Component {
               onChange={this.onValueChange}
             />
           </Form.Group>
-          <Button type="submit">Submit</Button>
+          <Button type="submit" className="purple">
+            Submit
+          </Button>
         </Form>
       </div>
     );

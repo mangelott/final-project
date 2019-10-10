@@ -76,7 +76,7 @@ export default class SingUp extends Component {
                 onChange={this.onValueChange}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" className="purple">
               Sign Up
             </Button>
             <Form.Text className="text-muted">
