@@ -38,7 +38,7 @@ export default class Load extends Component {
     const id = this.props.match.params.id;
     Service.load(id)
       .then(recipe => {
-        console.log(recipe);
+        // console.log(recipe);
         this.setState({
           recipe
         });

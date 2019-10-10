@@ -5,7 +5,7 @@ import RecipeItem from "./RecipeItem";
 export default class RecipeList extends Component {
   render() {
     const { loadAll, handleDelete, items } = this.props;
-
+    console.log(this.props.filtered);
     return (
       <div>
         <ul className="list-group my-5">

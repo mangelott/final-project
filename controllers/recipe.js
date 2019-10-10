@@ -37,7 +37,7 @@ exports.uploadImage = (req, res, next) => {
 exports.create = (req, res, next) => {
   const {
     title,
-    dishtype,
+    dishType,
     ingredients,
     directions,
     calories,
@@ -48,7 +48,7 @@ exports.create = (req, res, next) => {
 
   Recipe.create({
     title,
-    dishtype,
+    dishType,
     ingredients,
     directions,
     duration,

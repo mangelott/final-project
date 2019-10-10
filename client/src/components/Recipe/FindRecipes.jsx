@@ -24,7 +24,6 @@ export default class FindRecipes extends Component {
       });
   }
   render() {
-    const recipe = this.state.recipes;
     return (
       <div>
         {this.state.recipes.map(recipe => (
