@@ -12,6 +12,7 @@ export default class Profile extends Component {
     this.state = {
       user: ""
     };
+    this.signOut = this.signOut.bind(this);
     this.loadUser = this.loadUser.bind(this);
   }
 
@@ -32,6 +33,17 @@ export default class Profile extends Component {
     this.loadUser();
   }
 
+  signOut(event) {
+    event.preventDefault();
+    AuthServ.logOutService()
+      .then(() => {
+        this.props.history.push("/home");
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
     const user = this.state.user;
     return (
@@ -39,6 +51,9 @@ export default class Profile extends Component {
         <Container className="">
           <Link className="btn btn-primary" to={`/user/${user._id}/edit`}>
             Edit
+          </Link>
+          <Link className="btn btn-primary" to={"/"} onSubmit={this.signOut}>
+            Log out
           </Link>
           <Card
             className="border-0 mb-4"

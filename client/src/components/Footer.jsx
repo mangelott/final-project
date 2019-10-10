@@ -11,7 +11,6 @@ export default class NavBar extends Component {
     this.state = {
       user: ""
     };
-    this.signOut = this.signOut.bind(this);
     this.loadUser = this.loadUser.bind(this);
   }
 
@@ -32,17 +31,6 @@ export default class NavBar extends Component {
     this.loadUser();
   }
 
-  signOut(event) {
-    event.preventDefault();
-    AuthServ.logOutService()
-      .then(() => {
-        this.props.history.push("/home");
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
-
   render() {
     return (
       <div>
@@ -59,7 +47,7 @@ export default class NavBar extends Component {
               src="/image/recipe-icon.png"
             />
           </Link>
-          <Link className="btn" to={"/user"}>
+          <Link className="btn" to={"/videos"}>
             <Image
               style={{ width: "50px", height: "50px" }}
               src="/image/videos-icon.png"

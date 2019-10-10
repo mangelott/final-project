@@ -68,13 +68,18 @@ export default class SingIn extends Component {
               />
             </Form.Group>
             {this.state.password.length >= 8 && (
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" className="purple">
                 Sign Up
               </Button>
             )}
             {this.state.password.length < 8 && (
               <div>
-                <Button disabled variant="primary" type="submit">
+                <Button
+                  disabled
+                  variant="primary"
+                  type="submit"
+                  className="purple"
+                >
                   Sign Up
                 </Button>
                 <p className="text-feedback">
@@ -83,9 +88,6 @@ export default class SingIn extends Component {
                 </p>
               </div>
             )}
-            <Button variant="primary" type="submit" className="purple">
-              Log in
-            </Button>
             <Form.Text className="text-muted">
               Don't you have an user account yet? Click{" "}
               <Link to="/signup">here</Link> to Sign up

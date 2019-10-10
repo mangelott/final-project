@@ -19,7 +19,7 @@ const blogRouter = require("./routes/blogging");
 
 const app = express();
 
-app.use(serveFavicon(join(__dirname, "public/images", "fav-icon.ico")));
+app.use(serveFavicon(join(__dirname, "public/images", "favicon.ico")));
 app.use(express.static(join(__dirname, "client/build")));
 app.use(logger("dev"));
 app.use(express.json());
