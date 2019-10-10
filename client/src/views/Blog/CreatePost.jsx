@@ -51,7 +51,7 @@ export default class CreatePost extends Component {
 
   render() {
     return (
-      <div>
+      <div className="mt-4 pb-5">
         <Container>
           <Form onSubmit={this.creatingPost}>
             <Form.Group>

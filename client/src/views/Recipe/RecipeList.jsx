@@ -16,6 +16,7 @@ export default class RecipeList extends Component {
                 <RecipeItem
                   key={recipe._id}
                   title={recipe.title}
+                  image={recipe.image}
                   handleDelete={() => handleDelete(recipe._id)}
                   loadAll={loadAll}
                   id={recipe._id}

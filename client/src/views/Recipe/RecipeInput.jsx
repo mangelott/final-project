@@ -27,7 +27,7 @@ export default class TodoInput extends Component {
         <form onSubmit={this.handleSubmit}>
           <div className="input-group">
             <div className="input-group-prepend">
-              <div className="input-group-text bg-success text-white">
+              <div className="input-group-text purple text-white">
                 <i className="fas fa-clipboard-list"></i>
               </div>
             </div>

@@ -50,7 +50,6 @@ export default class index extends Component {
         this.setState({
           items
         });
-        // console.log("recipe:", this.state);
       })
       .catch(error => {
         console.log(error);
@@ -83,9 +82,9 @@ export default class index extends Component {
     const handleDelete = this.handleDelete;
     const performSearch = this.performSearch;
     return (
-      <div className="d-flex flex-column align-items-center m-3">
+      <div className="d-flex flex-column align-items-center m-3 ">
         <Link to="/recipe/create">
-          <button type="submit" className="btn btn-block btn-success mt-3">
+          <button type="submit" className="btn btn-block purple mt-3">
             New Recipe
           </button>
         </Link>

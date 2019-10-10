@@ -1,25 +1,49 @@
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap");
+/* 
+body {
+  font-family: "Nunito Sans", "sans-serif";
 } */
+
+.App {
+  background-color: rgb(126, 70, 185);
+  font-family: "Nunito Sans", "sans-serif";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: rgb(126, 70, 185);
+}
+
+.content-border {
+  background-color: #fff;
+  -webkit-border-top-left-radius: 50px;
+  -webkit-border-top-right-radius: 50px;
+  -moz-border-radius-topleft: 50px;
+  -moz-border-radius-topright: 50px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+.content-style {
+  overflow: auto;
+  min-height: 600px;
+}
+
+.text-box {
+  white-space: pre-line;
+  text-align: left;
+}
+.header-style {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  background-color: rgb(126, 70, 185);
+}
 
 .player-wrapper {
   position: relative;
@@ -36,4 +60,34 @@
   -webkit-box-shadow: inset 0px -112px 137px 15px rgba(126, 70, 185, 0.5);
   -moz-box-shadow: inset 0px -112px 137px 15px rgba(126, 70, 185, 0.5);
   box-shadow: inset 0px -112px 137px 15px rgba(126, 70, 185, 0.5);
+}
+
+.component-image {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.profile-image {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.footer-style {
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  height: 70px;
+  width: 100%;
+  background-color: rgb(126, 70, 185);
+}
+
+.purple {
+  color: white !important;
+  background-color: rgb(126, 70, 185) !important;
+}
+.purple-icon {
+  color: rgb(126, 70, 185) !important;
+  background-color: white !important;
 }

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import * as AuthServ from "./../../services/auth-view-service";
+import FindRecipes from "./../../components/Recipe/FindRecipes";
 
 import { Link } from "react-router-dom";
 
-import { Container, Card, Figure } from "react-bootstrap/";
+import { Container, Card } from "react-bootstrap/";
 
 export default class Profile extends Component {
   constructor(props) {
@@ -34,20 +35,36 @@ export default class Profile extends Component {
   render() {
     const user = this.state.user;
     return (
-      <div>
-        <Link className="btn btn-primary" to={`/user/${user._id}/edit`}>
-          Edit
-        </Link>
-        <Container>
-          <Card className="border-0" style={{ width: "300px" }}>
-            <Figure>
-              <Figure.Image variant="top" src={user.image} roundedCircle />
-            </Figure>
+      <div className="mt-4 pb-5">
+        <Container className="">
+          <Link className="btn btn-primary" to={`/user/${user._id}/edit`}>
+            Edit
+          </Link>
+          <Card
+            className="border-0 mb-4"
+            style={{ width: "150px", height: "150px" }}
+          >
+            <Card
+              className="border border-dark rounded-circle profile-image"
+              variant="top"
+              // src={user.image}
+              style={{
+                width: "100%",
+                height: "100%",
+                backgroundImage: `url(${user.image})`
+              }}
+            />
           </Card>
-
-          <h1>{user.username}'s Profile</h1>
-          <span className="text-muted">{user.email}</span>
-          <p>{user.about}</p>
+          <div>
+            <p>
+              <strong>{user.username}</strong>
+            </p>
+            <span className="text-muted">{user.email}</span>
+          </div>
+          <div>
+            <p>{user.about}</p>
+          </div>
+          <FindRecipes />
         </Container>
       </div>
     );
