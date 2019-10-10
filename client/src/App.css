@@ -91,6 +91,7 @@ h5 {
 .purple {
   color: white !important;
   background-color: rgb(126, 70, 185) !important;
+  border-color: rgb(126, 70, 185) !important ;
 }
 .purple-icon {
   color: rgb(126, 70, 185) !important;

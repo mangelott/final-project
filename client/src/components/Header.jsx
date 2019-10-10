@@ -11,7 +11,7 @@ export default class Header extends Component {
         <Link to={"/home"}>
           {
             <i className="mx-2 purple">
-              <i className="fas fa-home fa-3x"></i>
+              <i className="fas fa-home fa-2x"></i>
             </i>
           }
         </Link>

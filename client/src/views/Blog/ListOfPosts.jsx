@@ -30,7 +30,11 @@ export default class Blog extends Component {
     return (
       <div className="mt-4 pb-5 mx-auto">
         <Container>
-          <Button type="submit" href="/blog/create">
+          <Button
+            type="submit"
+            href="/blog/create"
+            className="btn btn-block purple mt-3"
+          >
             Create a post
           </Button>
           <Row>
