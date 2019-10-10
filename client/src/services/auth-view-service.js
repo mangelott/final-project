@@ -62,9 +62,24 @@ export const logOutService = () =>
     authAPI
       .post("/logout")
       .then(response => {
+        console.log("serrvice logout");
         resolve();
       })
       .catch(error => {
         reject(error);
       });
   });
+
+export const verifyServ = () => {
+  return new Promise((resolve, reject) => {
+    authAPI
+      .get("/loggedin/verify")
+      .then(response => {
+        resolve(response.data.user);
+        console.log("VERIFY USER SERVICE RESPONSE", response.data.user);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+};

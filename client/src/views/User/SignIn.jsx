@@ -33,7 +33,9 @@ export default class SingIn extends Component {
       password
     })
       .then(user => {
+        this.props.changeUser(user);
         this.props.history.push("/user");
+        console.log("user>>>", user);
       })
       .catch(error => {
         console.log("uv got an error trying to login", error);
@@ -53,6 +55,7 @@ export default class SingIn extends Component {
                 name="email"
                 value={this.state.email}
                 onChange={this.onSignInChange}
+                required
               />
             </Form.Group>
             <Form.Group>
@@ -63,11 +66,30 @@ export default class SingIn extends Component {
                 name="password"
                 value={this.state.password}
                 onChange={this.onSignInChange}
+                required
               />
             </Form.Group>
-            <Button variant="primary" type="submit" className="purple">
-              Log in
-            </Button>
+            {this.state.password.length >= 8 && (
+              <Button variant="primary" type="submit" className="purple">
+                Sign Up
+              </Button>
+            )}
+            {this.state.password.length < 8 && (
+              <div>
+                <Button
+                  disabled
+                  variant="primary"
+                  type="submit"
+                  className="purple"
+                >
+                  Sign Up
+                </Button>
+                <p className="text-feedback">
+                  Remember that your password must have at least 8 characters
+                  between letters and numbers. Example: "yourpassword12345"
+                </p>
+              </div>
+            )}
             <Form.Text className="text-muted">
               Don't you have an user account yet? Click{" "}
               <Link to="/signup">here</Link> to Sign up

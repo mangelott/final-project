@@ -40,8 +40,12 @@ export default class TodoInput extends Component {
             ></input>
           </div>
           <Form.Group className="d-flex flex-column align-items-center m-3">
-            <Form.Control as="select" onChange={this.handleChange}>
-              <option disabled selected>
+            <Form.Control
+              as="select"
+              value={this.state.dishType}
+              onChange={this.handleChange}
+            >
+              <option disabled value="">
                 ...dish type
               </option>
               <option value="Breakfast">Breakfast</option>

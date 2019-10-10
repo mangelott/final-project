@@ -15,3 +15,12 @@ module.exports = (req, res, next) => {
       console.log("loading user error", error);
     });
 };
+
+// module.exports.verify = (req, res, next) => {
+//   res.json({
+//     type: "success",
+//     data: {
+//       ...(req.user && { user: req.user })
+//     }
+//   });
+// };
