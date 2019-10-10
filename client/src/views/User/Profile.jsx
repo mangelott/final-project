@@ -4,7 +4,7 @@ import FindRecipes from "./../../components/Recipe/FindRecipes";
 
 import { Link } from "react-router-dom";
 
-import { Container, Card, Form, Button } from "react-bootstrap/";
+import { Container, Card, Button } from "react-bootstrap/";
 export default class Profile extends Component {
   constructor(props) {
     super(props);
@@ -29,15 +29,15 @@ export default class Profile extends Component {
     return (
       user && (
         <div className="mt-4 pb-5">
-          <pre>{JSON.stringify(user, null, 2)}</pre>
-
           <Container className="">
-            <Link className="btn btn-primary" to={`/user/${user._id}/edit`}>
-              Edit
-            </Link>
-            <Button className="btn btn-primary" onClick={this.signOut}>
-              Log out
-            </Button>
+            <div className="d-flex justify-content-between mb-2">
+              <Link className="btn purple" to={`/user/${user._id}/edit`}>
+                Edit Profile
+              </Link>
+              <Button className="btn purple " onClick={this.signOut}>
+                Log out
+              </Button>
+            </div>
             <Card
               className="border-0 mb-4"
               style={{ width: "150px", height: "150px" }}

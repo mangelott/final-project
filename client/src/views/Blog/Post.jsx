@@ -72,16 +72,12 @@ export default class Post extends Component {
                   </Card.Text>
                   <div className="d-flex justify-content-around">
                     <Link
-                      className="btn btn-primary purple"
+                      className="btn  purple"
                       to={`/blog/${this.props.match.params.id}/edit`}
                     >
                       Edit Post
                     </Link>
-                    <Button
-                      variant="primary"
-                      onClick={this.deletePost}
-                      className="purple"
-                    >
+                    <Button onClick={this.deletePost} className="purple">
                       Delete the post
                     </Button>
                   </div>

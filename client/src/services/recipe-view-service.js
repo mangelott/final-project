@@ -42,7 +42,7 @@ export const listRecipes = () =>
       .get("/recipe")
       .then(response => {
         resolve(response.data.data.recipes);
-        console.log("resolve", resolve);
+        // console.log("resolve", resolve);
       })
       .catch(error => {
         reject(error);

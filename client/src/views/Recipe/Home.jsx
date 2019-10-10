@@ -73,6 +73,7 @@ export default class index extends Component {
     const loadAll = this.loadAll;
     const handleDelete = this.handleDelete;
     const performSearch = this.performSearch;
+
     return (
       <div className="d-flex flex-column align-items-center m-3 mb-5">
         <Link to="/recipe/create">

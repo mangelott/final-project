@@ -15,13 +15,13 @@ export default class FindRecipes extends Component {
   componentDidMount() {
     ServiceRecipe.listRecipes()
       .then(items => {
-        console.log("itemssss", items);
+        // console.log("itemssss", items);
         const randomIndex = Math.floor(Math.random() * items.length + 1) - 1;
-        console.log("IS IT RANDOM", randomIndex);
+        // console.log("IS IT RANDOM", randomIndex);
         this.setState({
           items: items[randomIndex]
         });
-        console.log("recipe:", this.state);
+        // console.log("recipe:", this.state);
       })
       .catch(error => {
         console.log(error);
@@ -29,7 +29,6 @@ export default class FindRecipes extends Component {
   }
   render() {
     const recipe = this.state.items;
-    console.log("recipe>>>", recipe);
     return (
       <div>
         <Link to={"/recipe"}>
