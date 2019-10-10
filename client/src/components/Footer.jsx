@@ -17,7 +17,6 @@ export default class NavBar extends Component {
   loadUser() {
     AuthServ.loadUserServ()
       .then(user => {
-        console.log("props", this.props);
         this.setState({
           user
         });

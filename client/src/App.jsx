@@ -115,9 +115,11 @@ export default class App extends Component {
                 redirectPath="/"
                 component={HomeView}
               />
-              <Route
+              <ProtectedRoute
                 path="/user"
                 exact
+                verify={this.verifyUserLoggedIn}
+                redirectPath="/"
                 render={props => (
                   <ProfileView
                     user={this.state.user}
@@ -127,15 +129,46 @@ export default class App extends Component {
                 )}
               />
               <Route path="/user/:id/edit" component={EditProfileView} />
-              <Route path="/recipe" exact component={HomeRecipeView} />
-              <Route path="/recipe/create" exact component={CreateRecipeView} />
+              <ProtectedRoute
+                path="/recipe"
+                exact
+                verify={this.verifyUserLoggedIn}
+                render={props => (
+                  <HomeRecipeView user={this.state.user} {...props} />
+                )}
+              />
+              <ProtectedRoute
+                path="/recipe/create"
+                exact
+                verify={this.verifyUserLoggedIn}
+                render={props => (
+                  <CreateRecipeView user={this.state.user} {...props} />
+                )}
+              />
               <Route path="/recipe/:id" exact component={ViewRecipe} />
               <Route path="/recipe/:id/edit" component={EditRecipeView} />
-              <Route path="/blog" exact component={BlogView} />
-              <Route path="/blog/create" component={CreatePostView} />
+              <ProtectedRoute
+                path="/blog"
+                exact
+                verify={this.verifyUserLoggedIn}
+                render={props => <BlogView user={this.state.user} {...props} />}
+              />
+              <ProtectedRoute
+                path="/blog/create"
+                verify={this.verifyUserLoggedIn}
+                render={props => (
+                  <CreatePostView user={this.state.user} {...props} />
+                )}
+              />
               <Route path="/blog/:id" exact component={PostView} />
               <Route path="/blog/:id/edit" component={EditPostView} />
-              <Route path="/videos" component={VideosView} />
+              <ProtectedRoute
+                path="/videos"
+                verify={this.verifyUserLoggedIn}
+                render={props => (
+                  <VideosView user={this.state.user} {...props} />
+                )}
+              />
               <Route path="/error/:code" component={ErrorView} />
               <Route path="/" component={CatchAllView} />
             </Switch>
