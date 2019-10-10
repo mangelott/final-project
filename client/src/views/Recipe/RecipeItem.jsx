@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Card } from "react-bootstrap";
 
 export default class RecipeItem extends Component {
   render() {
-    const { title, id, handleDelete } = this.props;
+    const { title, id, handleDelete, image } = this.props;
     return (
-      <div>
-        <li className="li list-group-item text-capitalize d-flex justify-content-between my-2">
+      <Card style={{ width: "20rem" }}>
+        <Card.Img variant="top" src={image} alt="Image" />
+        <Card.Body className="li list-group-item text-capitalize d-flex justify-content-between my-2">
           <Link to={`/recipe/${id}`}>
-            <span>
-              <h6>{title}</h6>
-            </span>
+            <h6>{title}</h6>
           </Link>
           <div className="todo-icon">
             <Link to={`/recipe/${id}/edit`}>
-              <span className="mx-2 text-success">
+              <span className="mx-2 purple-icon">
                 <i className="fas fa-pen"></i>
               </span>
             </Link>
@@ -22,8 +22,8 @@ export default class RecipeItem extends Component {
               <i className="fas fa-trash"></i>
             </span>
           </div>
-        </li>
-      </div>
+        </Card.Body>
+      </Card>
     );
   }
 }

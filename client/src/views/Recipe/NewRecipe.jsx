@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 
 import * as Service from "../../services/recipe-view-service";
 
@@ -67,7 +67,7 @@ export default class newRecipe extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <Form onSubmit={this.onFormSubmit}>
           <Form.Group>
             <Form.Label>Title</Form.Label>
@@ -158,7 +158,7 @@ export default class newRecipe extends Component {
 
           <Button type="submit">Submit</Button>
         </Form>
-      </div>
+      </Container>
     );
   }
 }

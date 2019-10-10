@@ -87,3 +87,12 @@ h5 {
   color: rgba(255, 31, 31, 0.6);
   font-size: 12px;
 }
+
+.purple {
+  color: white !important;
+  background-color: rgb(126, 70, 185) !important;
+}
+.purple-icon {
+  color: rgb(126, 70, 185) !important;
+  background-color: white !important;
+}

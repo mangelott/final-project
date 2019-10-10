@@ -5,17 +5,26 @@ import RecipeList from "./RecipeList";
 import * as ServiceRecipe from "../../services/recipe-view-service";
 
 export default class index extends Component {
-  state = {
-    items: [],
-    item: "",
-    title: "",
-    query: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: [],
+      item: "",
+      title: "",
+      query: "",
+      dishType: ""
+    };
+    this.performSearch = this.performSearch.bind(this);
+  }
 
   handleChange = event => {
+    console.log("Here");
+    const name = event.target.name;
+    const value = event.target.value;
     this.setState({
-      item: event.target.value
+      [name]: value
     });
+    console.log(this.state.dishType);
   };
 
   handleDelete = id => {
@@ -47,38 +56,48 @@ export default class index extends Component {
       });
   }
 
-  performSearch = value => {
+  performSearch = ({ query, type }) => {
     this.setState({
-      query: value
+      // query: value
+      ...(query !== undefined && { query }),
+      ...(type && { dishType: type })
     });
   };
 
-  // get filteredRecipeList() {
-  //   const query = this.state.query;
-  //   const recipeList = this.state.items;
-  //   return recipeList.filter(recipe =>
-  //     recipe.toLowerCase().includes(query.toLocaleLowerCase())
-  //   );
-  // }
+  get filteredRecipeList() {
+    const query = this.state.query;
+    const dishType = this.state.dishType;
+    const recipeList = this.state.items;
+    // const dishType = this.state.dishType;
+    return recipeList.filter(
+      recipe =>
+        recipe.title.toLowerCase().includes(query.toLocaleLowerCase()) &&
+        recipe.dishType.toLowerCase().includes(dishType.toLocaleLowerCase())
+    );
+  }
 
   render() {
-    // const filtered = this.filteredRecipeList;
+    const filtered = this.filteredRecipeList;
     const loadAll = this.loadAll;
     const handleDelete = this.handleDelete;
     const performSearch = this.performSearch;
-    console.log(this.state.items);
     return (
-      <div className="d-flex flex-column align-items-center m-3">
+      <div className="d-flex flex-column align-items-center m-3 ">
         <Link to="/recipe/create">
-          <button type="submit" className="btn btn-block btn-success mt-3">
+          <button type="submit" className="btn btn-block purple mt-3">
             New Recipe
           </button>
         </Link>
-        <RecipeInput performSearch={performSearch} query={this.query} />
+        <RecipeInput
+          performSearch={performSearch}
+          query={this.query}
+          dishType={this.dishType}
+        />
         <RecipeList
-          items={this.state.items}
+          items={filtered}
           loadAll={loadAll}
           handleDelete={handleDelete}
+          filtered={filtered}
         />
       </div>
     );

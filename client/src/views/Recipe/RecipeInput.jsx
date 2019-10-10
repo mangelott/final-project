@@ -1,15 +1,33 @@
 import React, { Component } from "react";
 
-import { Dropdown } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 export default class TodoInput extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { dishType: "" };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    const type = event.target.value;
+    this.setState({ dishType: type });
+    this.props.performSearch({ type });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+  }
+
   render() {
     const { performSearch, query } = this.props;
     return (
       <div className="card card-body my-3">
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div className="input-group">
             <div className="input-group-prepend">
-              <div className="input-group-text bg-success text-white">
+              <div className="input-group-text purple text-white">
                 <i className="fas fa-clipboard-list"></i>
               </div>
             </div>
@@ -18,22 +36,22 @@ export default class TodoInput extends Component {
               className="form-control text-capitalize"
               placeholder="search a recipe item"
               value={query}
-              onChange={event => performSearch(event.target.value)}
+              onChange={event => performSearch({ query: event.target.value })}
             ></input>
           </div>
-          <Dropdown className="d-flex flex-column align-items-center m-3">
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-              Dish Type
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Breakfast</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Dish</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Dessert</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Drink</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Snack</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Other</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          <Form.Group className="d-flex flex-column align-items-center m-3">
+            <Form.Control as="select" onChange={this.handleChange}>
+              <option disabled selected>
+                ...dish type
+              </option>
+              <option value="Breakfast">Breakfast</option>
+              <option value="Dish">Dish</option>
+              <option value="Dessert">Dessert</option>
+              <option value="Drink">Drink</option>
+              <option value="Snack">Snack</option>
+              <option value="Other">Other</option>
+            </Form.Control>
+          </Form.Group>
         </form>
       </div>
     );

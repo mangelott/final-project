@@ -39,6 +39,16 @@ export default class RecipeForm extends Component {
             />
           </Form.Group>
           <Form.Group>
+            <Form.Label>DishType</Form.Label>
+            <Form.Control
+              type="text"
+              name="dishType"
+              value={this.props.value.dishType}
+              disabled="disabled"
+              className="text-capitalize"
+            />
+          </Form.Group>
+          <Form.Group>
             <Form.Label>Ingredients</Form.Label>
             <Form.Control
               type="text"
