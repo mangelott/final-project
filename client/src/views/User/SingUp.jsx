@@ -54,6 +54,7 @@ export default class SingUp extends Component {
                 placeholder="Enter email"
                 value={this.state.email}
                 onChange={this.onValueChange}
+                required
               />
             </Form.Group>
             <Form.Group controlId="formBasicEmail">
@@ -64,6 +65,7 @@ export default class SingUp extends Component {
                 placeholder="Enter a username"
                 value={this.state.username}
                 onChange={this.onValueChange}
+                required
               />
             </Form.Group>
             <Form.Group controlId="formBasicPassword">
@@ -74,11 +76,29 @@ export default class SingUp extends Component {
                 placeholder="Password"
                 value={this.state.password}
                 onChange={this.onValueChange}
+                required
+                data-container="body"
+                data-toggle="popover"
+                data-placement="top"
+                data-content="Tip: Your password must have at least 8 characters with letters and numbers"
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
-              Sign Up
-            </Button>
+            {this.state.password.length >= 8 && (
+              <Button variant="primary" type="submit">
+                Sign Up
+              </Button>
+            )}
+            {this.state.password.length < 8 && (
+              <div>
+                <Button disabled variant="primary" type="submit">
+                  Sign Up
+                </Button>
+                <p className="text-feedback">
+                  Your password must have at least 8 characters between letters
+                  and numbers. Example: "yourpassword12345"
+                </p>
+              </div>
+            )}
             <Form.Text className="text-muted">
               If you already has an account go to <Link to="/">Sign In</Link>
             </Form.Text>

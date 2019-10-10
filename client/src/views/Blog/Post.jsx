@@ -18,7 +18,6 @@ export default class Post extends Component {
   loadPost() {
     PostServ.loadPostServ(this.props.match.params.id)
       .then(blogging => {
-        // console.log(">>>", blogging);
         this.setState({
           blogging
         });

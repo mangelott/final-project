@@ -53,6 +53,7 @@ export default class SingIn extends Component {
                 name="email"
                 value={this.state.email}
                 onChange={this.onSignInChange}
+                required
               />
             </Form.Group>
             <Form.Group>
@@ -63,11 +64,25 @@ export default class SingIn extends Component {
                 name="password"
                 value={this.state.password}
                 onChange={this.onSignInChange}
+                required
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
-              Log in
-            </Button>
+            {this.state.password.length >= 8 && (
+              <Button variant="primary" type="submit">
+                Sign Up
+              </Button>
+            )}
+            {this.state.password.length < 8 && (
+              <div>
+                <Button disabled variant="primary" type="submit">
+                  Sign Up
+                </Button>
+                <p className="text-feedback">
+                  Remember that your password must have at least 8 characters
+                  between letters and numbers. Example: "yourpassword12345"
+                </p>
+              </div>
+            )}
             <Form.Text className="text-muted">
               Don't you have an user account yet? Click{" "}
               <Link to="/signup">here</Link> to Sign up

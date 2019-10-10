@@ -27,7 +27,7 @@ export default class Blog extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="mb-5 pb-4">
         <Container className="mb-4" style={{ width: "22rem" }}>
           {this.state.posts.map(blogging => (
             <Link key={blogging._id} to={`/blog/${blogging._id}`}>

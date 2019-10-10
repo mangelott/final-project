@@ -57,9 +57,9 @@ h5 {
 }
 
 .purple-filter {
-  -webkit-box-shadow: inset 0px -112px 137px 15px rgba(126, 70, 185, 0.5);
-  -moz-box-shadow: inset 0px -112px 137px 15px rgba(126, 70, 185, 0.5);
-  box-shadow: inset 0px -112px 137px 15px rgba(126, 70, 185, 0.5);
+  -webkit-box-shadow: inset 0px -158px 114px -104px rgba(30, 23, 38, 0.4);
+  -moz-box-shadow: inset 0px -158px 114px -104px rgba(30, 23, 38, 0.4);
+  box-shadow: inset 0px -158px 114px -104px rgba(30, 23, 38, 0.4);
 }
 
 .component-image {
@@ -81,4 +81,9 @@ h5 {
   height: 70px;
   width: 100%;
   background-color: rgb(126, 70, 185);
+}
+
+.text-feedback {
+  color: rgba(255, 31, 31, 0.6);
+  font-size: 12px;
 }
