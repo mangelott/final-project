@@ -38,6 +38,7 @@ export default class Blog extends Component {
               Create a post
             </Button>
           )}
+
           <Row>
             {this.state.posts.map(blogging => (
               <Link key={blogging._id} to={`/blog/${blogging._id}`}>

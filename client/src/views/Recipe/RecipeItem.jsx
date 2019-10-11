@@ -13,16 +13,18 @@ export default class RecipeItem extends Component {
             <Link to={`/recipe/${id}`}>
               <h6>{title}</h6>
             </Link>
-            <div className="todo-icon">
-              <Link to={`/recipe/${id}/edit`}>
-                <span className="mx-2 purple-icon">
-                  <i className="fas fa-pen"></i>
+            {this.props.user.role === "Hospital" && (
+              <div className="todo-icon">
+                <Link to={`/recipe/${id}/edit`}>
+                  <span className="mx-2 purple-icon">
+                    <i className="fas fa-pen"></i>
+                  </span>
+                </Link>
+                <span className="mx-2 text-danger" onClick={handleDelete}>
+                  <i className="fas fa-trash"></i>
                 </span>
-              </Link>
-              <span className="mx-2 text-danger" onClick={handleDelete}>
-                <i className="fas fa-trash"></i>
-              </span>
-            </div>
+              </div>
+            )}
           </Card.Body>
         </Card>
         <br></br>
