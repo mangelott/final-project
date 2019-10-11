@@ -62,7 +62,7 @@ export default class EditProfile extends Component {
     const user = this.state;
     return (
       <div>
-        <Container className="content-text mt-5 pt-5">
+        <Container className="content-text pt-5">
           <Form onSubmit={this.editProfile}>
             <Form.Group>
               <Form.Label>Email</Form.Label>

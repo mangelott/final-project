@@ -1,11 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap");
-/* 
-body {
-  font-family: "Nunito Sans", "sans-serif";
-} */
+// @import url("https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap");
 
-.App {
-  background-color: rgb(126, 70, 185);
+$purple: rgb(126, 70, 185);
+
+body {
+  background-color: $purple;
   font-family: "Nunito Sans", "sans-serif";
 }
 
@@ -13,31 +11,26 @@ h1,
 h2,
 h3,
 h4,
-h5 {
-  color: rgb(126, 70, 185);
+h5,
+h6 {
+  font-weight: bolder;
+  color: $purple;
 }
 
-/* * {
-  outline: 0.5px dashed red;
-} */
+h3 {
+  margin-bottom: 1rem;
+}
 
 .content-image {
   background-color: rgba(255, 255, 255, 0.5);
-  padding-top: 30vh;
-  -webkit-border-top-left-radius: 50px;
-  -webkit-border-top-right-radius: 50px;
-  -moz-border-radius-topleft: 50px;
-  -moz-border-radius-topright: 50px;
+  // padding-top: 30vh;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
+  overflow: hidden;
 }
 
 .content-text {
   background-color: white;
-  -webkit-border-top-left-radius: 50px;
-  -webkit-border-top-right-radius: 50px;
-  -moz-border-radius-topleft: 50px;
-  -moz-border-radius-topright: 50px;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
 }
@@ -52,11 +45,8 @@ content-border-image {
 }
 .header-style {
   z-index: 1;
-  /* position: fixed; */
-  top: 0;
   width: 100%;
-  height: 50px;
-  background-color: rgb(126, 70, 185);
+  background-color: $purple;
 }
 
 .player-wrapper {
@@ -94,7 +84,7 @@ content-border-image {
   bottom: 0;
   height: 70px;
   width: 100%;
-  background-color: rgb(126, 70, 185);
+  background-color: $purple;
 }
 
 .text-feedback {
@@ -104,17 +94,66 @@ content-border-image {
 
 .purple {
   color: white !important;
-  background-color: rgb(126, 70, 185) !important;
-  border-color: rgb(126, 70, 185) !important ;
+  background-color: $purple !important;
+  border-color: $purple !important ;
 }
 .purple-icon {
-  color: rgb(126, 70, 185) !important;
+  color: $purple !important;
   background-color: white !important;
 }
-/* 
+
+.form-control {
+  padding: 1.75em 1em;
+  border: 2px solid hsl(210, 10%, 92%);
+  &:focus {
+    border-color: $purple;
+    box-shadow: 0 0 0 0.2rem rgba($purple, 0.25);
+  }
+}
+
+a {
+  color: $purple;
+  // text-decoration: underline;
+  &:hover,
+  &:active {
+    color: lighten($purple, 10%);
+  }
+}
+
+form {
+  margin-bottom: 0.5em;
+}
+
+.content-text {
+  min-height: calc(100vh - 100px);
+}
+
+.recipe-image {
+  height: 30vh;
+  background-size: cover;
+  background-position: center center;
+}
+
+.recipe-image + div {
+  margin-top: -50px;
+}
+
 .scrolling-cards {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(6, calc(50% - 40px));
-  grid-template-rows: minmax(150px, 1fr);
-} */
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  a {
+    scroll-snap-align: center;
+    flex: 1 100%;
+    width: 100%;
+    // height: 10em;
+    margin-right: 1em;
+    .card {
+      min-height: 16em;
+      width: 16em;
+      border-radius: 1em;
+      overflow: hidden;
+      box-shadow: 0 0 1.5em -0.5em hsla(0, 0%, 50%, 0.5);
+    }
+  }
+}

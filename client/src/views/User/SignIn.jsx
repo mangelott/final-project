@@ -45,7 +45,7 @@ export default class SingIn extends Component {
   render() {
     return (
       <div>
-        <Container className="content-text mt-5 pt-5">
+        <Container className="content-text pt-5">
           <Form onSubmit={this.onSignInSubmit}>
             <Form.Group>
               <Form.Label>Email</Form.Label>
@@ -69,27 +69,27 @@ export default class SingIn extends Component {
                 required
               />
             </Form.Group>
-            {this.state.password.length >= 8 && (
+            {(this.state.password.length > 0 &&
+              this.state.password.length < 8 && (
+                <div>
+                  <Button disabled type="submit" className="purple">
+                    Login
+                  </Button>
+                  <p className="text-feedback">
+                    Remember that your password must have at least 8 characters
+                    between letters and numbers. Example: "yourpassword12345"
+                  </p>
+                </div>
+              )) || (
               <Button type="submit" className="purple">
                 Login
               </Button>
             )}
-            {this.state.password.length < 8 && (
-              <div>
-                <Button disabled type="submit" className="purple">
-                  Login
-                </Button>
-                <p className="text-feedback">
-                  Remember that your password must have at least 8 characters
-                  between letters and numbers. Example: "yourpassword12345"
-                </p>
-              </div>
-            )}
-            <Form.Text className="text-muted">
-              Don't you have an user account yet? Click{" "}
-              <Link to="/signup">here</Link> to Sign up
-            </Form.Text>
           </Form>
+          <span className="text-muted">
+            Don't you have an user account yet? Click{" "}
+            <Link to="/signup">here</Link> to Sign up
+          </span>
         </Container>
       </div>
     );

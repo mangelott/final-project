@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import * as Service from "./../../services/recipe-view-service";
 
+import Container from "react-bootstrap/Container";
+
 export default class Load extends Component {
   constructor(props) {
     super(props);
@@ -60,21 +62,24 @@ export default class Load extends Component {
     const recipe = this.state.recipe;
     return (
       <div>
-        <div
-          className="content-image  mt-5 "
-          style={{
-            backgroundImage: `url(${recipe.image})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "100%"
-          }}
-        >
-          <div className=" text-center content-text ">
-            <br></br>
-            <h1>{recipe.title}</h1>
-            <p>Ingredients: {recipe.ingredients}</p>
-            <p>Steps: {recipe.directions}</p>
-            <p>{recipe.duration} minutes</p>
-            <p>{recipe.calories} calories</p>
+        <div className="content-image">
+          <div
+            className="recipe-image"
+            style={{
+              backgroundImage: `url(${recipe.image})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "100%"
+            }}
+          ></div>
+          <div className="text-center content-text">
+            <Container>
+              <br></br>
+              <h1>{recipe.title}</h1>
+              <p>Ingredients: {recipe.ingredients}</p>
+              <p>Steps: {recipe.directions}</p>
+              <p>{recipe.duration} minutes</p>
+              <p>{recipe.calories} calories</p>
+            </Container>
           </div>
         </div>
       </div>

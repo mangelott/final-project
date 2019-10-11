@@ -29,7 +29,7 @@ export default class Profile extends Component {
     return (
       user && (
         <div className=" content-text">
-          <Container className="mt-5 pt-5 ">
+          <Container className="pt-5 ">
             <div className="d-flex justify-content-between mb-2">
               <Link className="btn purple" to={`/user/${user._id}/edit`}>
                 Edit Profile
@@ -40,20 +40,18 @@ export default class Profile extends Component {
             </div>
             <div className="d-flex flex-column mt-3">
               <div>
-                <Card
-                  className="border-0 mb-4"
-                  style={{ width: "150px", height: "150px" }}
-                >
-                  <Card
+                <Card className="border-0 mb-4">
+                  <div
                     className="border border-dark rounded-circle profile-image"
                     variant="top"
                     // src={user.image}
                     style={{
-                      width: "100%",
-                      height: "100%",
-                      backgroundImage: `url(${user.image})`
+                      width: "150px",
+                      height: "150px",
+                      backgroundImage: `url(${user.image})`,
+                      margin: "0 auto"
                     }}
-                  />
+                  ></div>
                 </Card>
               </div>
               <div>

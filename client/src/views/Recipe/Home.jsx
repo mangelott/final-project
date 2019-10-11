@@ -76,7 +76,7 @@ export default class index extends Component {
 
     return (
       <div className="content-text">
-        <div className="d-flex flex-column align-items-center m-3 mb-5 mt-5 pt-5">
+        <div className="d-flex flex-column align-items-center mb-5 pt-5">
           {this.props.user.role === "Hospital" && (
             <Link to="/recipe/create">
               <button type="submit" className="btn btn-block purple mt-3">

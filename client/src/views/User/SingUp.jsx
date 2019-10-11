@@ -45,7 +45,7 @@ export default class SingUp extends Component {
   render() {
     return (
       <div>
-        <Container className="content-text mt-5 pt-5">
+        <Container className="content-text pt-5">
           <Form onSubmit={this.onSignUpSubmit}>
             <Form.Group>
               <Form.Label>Email</Form.Label>
@@ -84,27 +84,30 @@ export default class SingUp extends Component {
                 data-content="Tip: Your password must have at least 8 characters with letters and numbers"
               />
             </Form.Group>
-            {this.state.password.length >= 8 && (
+            {(this.state.password.length > 0 &&
+              this.state.password.length < 8 && (
+                <div>
+                  <Button disabled type="submit" className="purple">
+                    Sign Up
+                  </Button>
+                  <p className="text-feedback">
+                    Your password must have at least 8 characters between
+                    letters and numbers. Example: "yourpassword12345"
+                  </p>
+                </div>
+              )) || (
               <Button type="submit" className="purple">
                 Sign Up
               </Button>
             )}
-            {this.state.password.length < 8 && (
-              <div>
-                <Button disabled type="submit" className="purple">
-                  Sign Up
-                </Button>
-                <p className="text-feedback">
-                  Your password must have at least 8 characters between letters
-                  and numbers. Example: "yourpassword12345"
-                </p>
-              </div>
-            )}
 
-            <Form.Text className="text-muted">
+            {/* <Form.Text className="text-muted">
               If you already has an account go to <Link to="/">Sign In</Link>
-            </Form.Text>
+            </Form.Text> */}
           </Form>
+          <span className="text-muted">
+            If you already has an account go to <Link to="/">Sign In</Link>
+          </span>
         </Container>
       </div>
     );

@@ -28,26 +28,22 @@ export default class Blog extends Component {
   render() {
     return (
       <div className="mb-5 pb-4">
-        <Container className="mb-4 scrolling-cards" style={{ width: "22rem" }}>
+        <div className="mb-4 scrolling-cards">
           {this.state.posts.map(blogging => (
             <Link key={blogging._id} to={`/blog/${blogging._id}`}>
-              <Col>
-                <Card
-                  style={{
-                    widht: "22rem",
-                    height: "10em",
-                    backgroundImage: `url(${blogging.image})`
-                  }}
-                  className="mt-4 border-0 rounded-lg text-white component-image  d-flex flex-row"
-                >
-                  <Card.ImgOverlay className="purple-filter">
-                    <Card.Title>{blogging.title}</Card.Title>
-                  </Card.ImgOverlay>
-                </Card>
-              </Col>
+              <Card
+                style={{
+                  backgroundImage: `url(${blogging.image})`
+                }}
+                className="mt-4 border-0 rounded-lg text-white component-image  d-flex flex-row"
+              >
+                <Card.ImgOverlay className="purple-filter">
+                  <Card.Title>{blogging.title}</Card.Title>
+                </Card.ImgOverlay>
+              </Card>
             </Link>
           ))}
-        </Container>
+        </div>
       </div>
     );
   }

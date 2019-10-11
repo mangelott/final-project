@@ -1,6 +1,7 @@
 import React, { Component /* Fragment */ } from "react";
 
-import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.scss";
 
 import { Switch, Route } from "react-router-dom";
 

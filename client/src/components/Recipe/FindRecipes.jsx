@@ -31,7 +31,7 @@ export default class FindRecipes extends Component {
     const recipe = this.state.randomRecipe;
 
     return this.state.randomRecipe ? (
-      <div>
+      <div className="mb-3">
         <Link to={"/recipe"}>
           <Card
             style={{
@@ -39,7 +39,7 @@ export default class FindRecipes extends Component {
               backgroundImage: `url(${recipe.image})`,
               height: "10em"
             }}
-            className="mt-4 border-0 rounded-lg text-white component-image"
+            className="border-0 rounded-lg text-white component-image box-shadow "
             key={recipe._id}
           >
             <Card.ImgOverlay className="purple-filter">
