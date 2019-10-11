@@ -20,6 +20,7 @@ export default class RecipeList extends Component {
                   handleDelete={() => handleDelete(recipe._id)}
                   loadAll={loadAll}
                   id={recipe._id}
+                  user={this.props.user}
                 />
               );
             })}

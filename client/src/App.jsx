@@ -147,6 +147,7 @@ export default class App extends Component {
               <ProtectedRoute
                 path="/recipe/create"
                 exact
+                redirectPath="/"
                 verify={this.verifyUserLoggedIn}
                 render={props => (
                   <CreateRecipeView user={this.state.user} {...props} />
@@ -162,6 +163,7 @@ export default class App extends Component {
               />
               <ProtectedRoute
                 path="/recipe/:id/edit"
+                redirectPath="/"
                 verify={this.verifyUserLoggedIn}
                 render={props => (
                   <EditRecipeView user={this.state.user} {...props} />
@@ -170,11 +172,13 @@ export default class App extends Component {
               <ProtectedRoute
                 path="/blog"
                 exact
+                redirectPath="/"
                 verify={this.verifyUserLoggedIn}
                 render={props => <BlogView user={this.state.user} {...props} />}
               />
               <ProtectedRoute
                 path="/blog/create"
+                redirectPath="/"
                 verify={this.verifyUserLoggedIn}
                 render={props => (
                   <CreatePostView user={this.state.user} {...props} />
@@ -183,11 +187,13 @@ export default class App extends Component {
               <ProtectedRoute
                 path="/blog/:id"
                 exact
+                redirectPath="/"
                 verify={this.verifyUserLoggedIn}
                 render={props => <PostView user={this.state.user} {...props} />}
               />
               <ProtectedRoute
                 path="/blog/:id/edit"
+                redirectPath="/"
                 verify={this.verifyUserLoggedIn}
                 render={props => (
                   <EditPostView user={this.state.user} {...props} />
@@ -195,6 +201,7 @@ export default class App extends Component {
               />
               <ProtectedRoute
                 path="/videos"
+                redirectPath="/"
                 verify={this.verifyUserLoggedIn}
                 render={props => (
                   <VideosView user={this.state.user} {...props} />

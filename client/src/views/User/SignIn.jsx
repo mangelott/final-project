@@ -71,13 +71,13 @@ export default class SingIn extends Component {
             </Form.Group>
             {this.state.password.length >= 8 && (
               <Button type="submit" className="purple">
-                Sign Up
+                Login
               </Button>
             )}
             {this.state.password.length < 8 && (
               <div>
                 <Button disabled type="submit" className="purple">
-                  Log in
+                  Login
                 </Button>
                 <p className="text-feedback">
                   Remember that your password must have at least 8 characters

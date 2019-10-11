@@ -76,11 +76,13 @@ export default class index extends Component {
 
     return (
       <div className="d-flex flex-column align-items-center m-3 mb-5">
-        <Link to="/recipe/create">
-          <button type="submit" className="btn btn-block purple mt-3">
-            New Recipe
-          </button>
-        </Link>
+        {this.props.user.role === "Hospital" && (
+          <Link to="/recipe/create">
+            <button type="submit" className="btn btn-block purple mt-3">
+              New Recipe
+            </button>
+          </Link>
+        )}
         <RecipeInput
           performSearch={performSearch}
           query={this.query}
@@ -91,6 +93,7 @@ export default class index extends Component {
           loadAll={loadAll}
           handleDelete={handleDelete}
           filtered={filtered}
+          user={this.props.user}
         />
       </div>
     );
