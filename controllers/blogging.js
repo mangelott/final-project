@@ -5,9 +5,9 @@ const Blogging = require("./../models/blog");
 exports.create = (req, res, next) => {
   const { title, subtitle, text } = req.body;
 
-  const image = req.file.secure_url;
+  const image = req.file.url;
 
-  console.log(req.file.secure_url);
+  console.log(req.file);
   Blogging.create({
     title,
     subtitle,
