@@ -54,8 +54,8 @@ export default class Post extends Component {
     const post = this.state.blogging;
     return (
       (post && (
-        <div className="border-0">
-          <Container>
+        <div className="content-text border-0">
+          <Container className="mt-5 pt-5">
             <Card className="text-center border-0 pb-5 mb-3">
               <Card.Body>
                 <Card.Img variant="top" src={post.image} />

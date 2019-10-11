@@ -28,8 +28,8 @@ export default class Profile extends Component {
     const user = this.props.user;
     return (
       user && (
-        <div className="mt-4 pb-5">
-          <Container className="">
+        <div className=" content-text">
+          <Container className="mt-5 pt-5 ">
             <div className="d-flex justify-content-between mb-2">
               <Link className="btn purple" to={`/user/${user._id}/edit`}>
                 Edit Profile

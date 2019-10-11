@@ -27,8 +27,8 @@ export default class Blog extends Component {
   }
   render() {
     return (
-      <div className="mt-4 pb-5 mx-auto">
-        <Container>
+      <div className="mt-4 pb-5 mx-auto content-text">
+        <Container className="mt-5 pt-5 pb-5 mx-auto">
           {this.props.user.role === "Hospital" && (
             <Button
               type="submit"

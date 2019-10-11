@@ -8,8 +8,8 @@ import { Container } from "react-bootstrap";
 export default class HomeView extends Component {
   render() {
     return (
-      <div>
-        <Container className="mt-4">
+      <div className="content-text">
+        <Container className="mt-5  pt-5">
           <h1>
             <strong>FIND A RECIPE</strong>
           </h1>
