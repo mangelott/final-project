@@ -108,7 +108,14 @@ export default class App extends Component {
                   <SingInView changeUser={this.changeUser} {...props} />
                 )}
               />
-              <Route path="/signup" component={SignUpView} />
+              <ProtectedRoute
+                path="/signup"
+                verify={this.verifyUserNotLoggedIn}
+                redirectPath="/home"
+                render={props => (
+                  <SignUpView changeUser={this.changeUser} {...props} />
+                )}
+              />
               <ProtectedRoute
                 path="/home"
                 verify={this.verifyUserLoggedIn}

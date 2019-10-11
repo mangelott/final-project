@@ -25,7 +25,7 @@ const schema = new mongoose.Schema({
   image: {
     type: String,
     default:
-      "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_960_720.jpg"
+      "https://cdn0.iconfinder.com/data/icons/user-pictures/100/male-512.png"
   },
   about: {
     type: String
