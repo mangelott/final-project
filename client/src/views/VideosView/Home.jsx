@@ -7,7 +7,7 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <Container>
+        <Container className="content-text mt-5 pt-5">
           <Carousel interval={null}>
             <Carousel.Item className="player-wrapper">
               <ReactPlayer
