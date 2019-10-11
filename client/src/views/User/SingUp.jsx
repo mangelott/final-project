@@ -34,7 +34,8 @@ export default class SingUp extends Component {
       password
     })
       .then(user => {
-        this.props.history.push(`/user`);
+        this.props.changeUser(user);
+        this.props.history.push("/home");
       })
       .catch(error => {
         console.log("there was an error on signup>>>", error);

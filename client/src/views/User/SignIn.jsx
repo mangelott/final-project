@@ -77,7 +77,7 @@ export default class SingIn extends Component {
             {this.state.password.length < 8 && (
               <div>
                 <Button disabled type="submit" className="purple">
-                  Sign Up
+                  Log in
                 </Button>
                 <p className="text-feedback">
                   Remember that your password must have at least 8 characters

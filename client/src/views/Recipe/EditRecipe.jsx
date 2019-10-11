@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Button from "react-bootstrap/Button";
 
 import RecipeForm from "../../components/Recipe/RecipeForm";
 
 import * as Service from "../../services/recipe-view-service";
+import { Container } from "react-bootstrap";
 
 export default class editRecipe extends Component {
   constructor(props) {
@@ -73,16 +73,15 @@ export default class editRecipe extends Component {
 
   render() {
     return (
-      <div className="content-text mt-5 pt-5">
-        <h3>Edit Recipe: {this.state.recipe.title}</h3>
-        <RecipeForm
-          value={this.state.recipe}
-          onValueChange={this.onFormValueChange}
-          onFormSubmit={this.editRecipe}
-        ></RecipeForm>
-        <Button onClick={this.deleteRecipe} className="btn-danger">
-          Delete Recipe
-        </Button>
+      <div className="content-text mt-5 pt-5 mb-5 pb-5">
+        <Container>
+          <h3>Edit Recipe: {this.state.recipe.title}</h3>
+          <RecipeForm
+            value={this.state.recipe}
+            onValueChange={this.onFormValueChange}
+            onFormSubmit={this.editRecipe}
+          ></RecipeForm>
+        </Container>
       </div>
     );
   }

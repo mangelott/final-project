@@ -13,7 +13,6 @@ export const signUpViewServ = ({ username, email, password }) =>
         console.log("finally!", resolve);
       })
       .catch(error => {
-        console.log(">>>>", error);
         reject(error);
       });
   });
@@ -26,7 +25,6 @@ export const signInViewServ = ({ email, password }) =>
         resolve(response.data.user);
       })
       .catch(error => {
-        console.log("uv got an error trying to login", error);
         reject(error);
       });
   });

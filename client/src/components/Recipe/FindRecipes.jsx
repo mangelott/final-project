@@ -8,7 +8,7 @@ export default class FindRecipes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: []
+      randomRecipe: null
     };
   }
 
@@ -19,7 +19,7 @@ export default class FindRecipes extends Component {
         const randomIndex = Math.floor(Math.random() * items.length + 1) - 1;
         // console.log("IS IT RANDOM", randomIndex);
         this.setState({
-          items: items[randomIndex]
+          randomRecipe: items[randomIndex]
         });
         // console.log("recipe:", this.state);
       })
@@ -28,8 +28,9 @@ export default class FindRecipes extends Component {
       });
   }
   render() {
-    const recipe = this.state.items;
-    return (
+    const recipe = this.state.randomRecipe;
+
+    return this.state.randomRecipe ? (
       <div>
         <Link to={"/recipe"}>
           <Card
@@ -47,6 +48,8 @@ export default class FindRecipes extends Component {
           </Card>
         </Link>
       </div>
+    ) : (
+      <div> Image loading ...</div>
     );
   }
 }

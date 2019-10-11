@@ -20,7 +20,6 @@ export default class Blog extends Component {
         this.setState({
           posts
         });
-        console.log("post:", posts);
       })
       .catch(error => {
         console.log(error);
@@ -28,15 +27,17 @@ export default class Blog extends Component {
   }
   render() {
     return (
-      <div className="content-text">
+      <div className="mt-4 pb-5 mx-auto content-text">
         <Container className="mt-5 pt-5 pb-5 mx-auto">
-          <Button
-            type="submit"
-            href="/blog/create"
-            className="btn btn-block purple mt-3"
-          >
-            Create a post
-          </Button>
+          {this.props.user.role === "Hospital" && (
+            <Button
+              type="submit"
+              href="/blog/create"
+              className="btn btn-block purple mt-3"
+            >
+              Create a post
+            </Button>
+          )}
           <Row>
             {this.state.posts.map(blogging => (
               <Link key={blogging._id} to={`/blog/${blogging._id}`}>

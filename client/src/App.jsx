@@ -108,7 +108,14 @@ export default class App extends Component {
                   <SingInView changeUser={this.changeUser} {...props} />
                 )}
               />
-              <Route path="/signup" component={SignUpView} />
+              <ProtectedRoute
+                path="/signup"
+                verify={this.verifyUserNotLoggedIn}
+                redirectPath="/home"
+                render={props => (
+                  <SignUpView changeUser={this.changeUser} {...props} />
+                )}
+              />
               <ProtectedRoute
                 path="/home"
                 verify={this.verifyUserLoggedIn}
@@ -145,8 +152,21 @@ export default class App extends Component {
                   <CreateRecipeView user={this.state.user} {...props} />
                 )}
               />
-              <Route path="/recipe/:id" exact component={ViewRecipe} />
-              <Route path="/recipe/:id/edit" component={EditRecipeView} />
+              <ProtectedRoute
+                path="/recipe/:id"
+                exact
+                verify={this.verifyUserLoggedIn}
+                render={props => (
+                  <ViewRecipe user={this.state.user} {...props} />
+                )}
+              />
+              <ProtectedRoute
+                path="/recipe/:id/edit"
+                verify={this.verifyUserLoggedIn}
+                render={props => (
+                  <EditRecipeView user={this.state.user} {...props} />
+                )}
+              />
               <ProtectedRoute
                 path="/blog"
                 exact
@@ -160,8 +180,19 @@ export default class App extends Component {
                   <CreatePostView user={this.state.user} {...props} />
                 )}
               />
-              <Route path="/blog/:id" exact component={PostView} />
-              <Route path="/blog/:id/edit" component={EditPostView} />
+              <ProtectedRoute
+                path="/blog/:id"
+                exact
+                verify={this.verifyUserLoggedIn}
+                render={props => <PostView user={this.state.user} {...props} />}
+              />
+              <ProtectedRoute
+                path="/blog/:id/edit"
+                verify={this.verifyUserLoggedIn}
+                render={props => (
+                  <EditPostView user={this.state.user} {...props} />
+                )}
+              />
               <ProtectedRoute
                 path="/videos"
                 verify={this.verifyUserLoggedIn}

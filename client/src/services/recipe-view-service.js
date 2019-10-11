@@ -25,10 +25,7 @@ export const load = id => {
     recipeAPI
       .get(`/recipe/${id}`)
       .then(response => {
-        console.log(response.data.data.recipe)
-
         resolve(response.data.data.recipe);
-
       })
       .catch(error => {
         reject(error);
@@ -63,7 +60,6 @@ export const edit = (id, updatedRecipe) =>
       });
   });
 
-
 export const remove = id => {
   return new Promise((resolve, reject) => {
     recipeAPI
@@ -76,6 +72,3 @@ export const remove = id => {
       });
   });
 };
-
-
-
