@@ -41,9 +41,9 @@ app.use(
 
 app.use(deserializeUserMiddleware);
 
-app.use("/", authRouter);
-app.use("/", routeGuardMiddleware(true), recipeRouter);
-app.use("/", routeGuardMiddleware(true), blogRouter);
+app.use("/api", authRouter);
+app.use("/api", routeGuardMiddleware(true), recipeRouter);
+app.use("/api", routeGuardMiddleware(true), blogRouter);
 
 app.get("*", (req, res, next) => {
   res.sendFile(join(__dirname, "./client/build/index.html"));

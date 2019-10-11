@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const authAPI = axios.create({
-  baseURL: "/"
+  baseURL: "/api"
 });
 
 export const signUpViewServ = ({ username, email, password }) =>
