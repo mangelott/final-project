@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const blogAPI = axios.create({
-  baseURL: "/"
+  baseURL: "/api"
 });
 
 export const createPostServ = data =>

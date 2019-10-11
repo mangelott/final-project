@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const recipeAPI = axios.create({
-  baseURL: "/"
+  baseURL: "/api"
 });
 
 export const newRecipe = data => {

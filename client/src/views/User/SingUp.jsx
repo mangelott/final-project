@@ -45,7 +45,7 @@ export default class SingUp extends Component {
   render() {
     return (
       <div>
-        <Container>
+        <Container className="content-text mt-5 pt-5">
           <Form onSubmit={this.onSignUpSubmit}>
             <Form.Group>
               <Form.Label>Email</Form.Label>

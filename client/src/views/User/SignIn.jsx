@@ -45,7 +45,7 @@ export default class SingIn extends Component {
   render() {
     return (
       <div>
-        <Container>
+        <Container className="content-text mt-5 pt-5">
           <Form onSubmit={this.onSignInSubmit}>
             <Form.Group>
               <Form.Label>Email</Form.Label>
