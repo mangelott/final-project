@@ -111,3 +111,10 @@ content-border-image {
   color: rgb(126, 70, 185) !important;
   background-color: white !important;
 }
+/* 
+.scrolling-cards {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(6, calc(50% - 40px));
+  grid-template-rows: minmax(150px, 1fr);
+} */

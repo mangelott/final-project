@@ -38,31 +38,35 @@ export default class Profile extends Component {
                 Log out
               </Button>
             </div>
-            <Card
-              className="border-0 mb-4"
-              style={{ width: "150px", height: "150px" }}
-            >
-              <Card
-                className="border border-dark rounded-circle profile-image"
-                variant="top"
-                // src={user.image}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  backgroundImage: `url(${user.image})`
-                }}
-              />
-            </Card>
-            <div>
-              <p>
-                <strong>{user.username}</strong>
-              </p>
-              <span className="text-muted">{user.email}</span>
+            <div className="d-flex flex-column mt-3">
+              <div>
+                <Card
+                  className="border-0 mb-4"
+                  style={{ width: "150px", height: "150px" }}
+                >
+                  <Card
+                    className="border border-dark rounded-circle profile-image"
+                    variant="top"
+                    // src={user.image}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      backgroundImage: `url(${user.image})`
+                    }}
+                  />
+                </Card>
+              </div>
+              <div>
+                <p>
+                  <strong>{user.username}</strong>
+                </p>
+                <span className="text-muted">{user.email}</span>
+              </div>
+              <div>
+                <p>{user.about}</p>
+              </div>
+              <FindRecipes />
             </div>
-            <div>
-              <p>{user.about}</p>
-            </div>
-            <FindRecipes />
           </Container>
         </div>
       )

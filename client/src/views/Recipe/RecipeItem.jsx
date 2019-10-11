@@ -7,9 +7,14 @@ export default class RecipeItem extends Component {
     const { title, id, handleDelete, image } = this.props;
     return (
       <Container>
-        <Card style={{ width: "20rem" }}>
-          <Card.Img variant="top" src={image} alt="Image" />
-          <Card.Body className="li list-group-item text-capitalize d-flex justify-content-between my-2">
+        <Card style={{ width: "20rem" }} className="border-0">
+          <Card.Img
+            variant="top"
+            src={image}
+            alt="Image"
+            className="border-0"
+          />
+          <Card.Body className="li list-group-item text-capitalize d-flex justify-content-between my-2 border-0">
             <Link to={`/recipe/${id}`}>
               <h6>{title}</h6>
             </Link>

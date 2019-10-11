@@ -27,7 +27,7 @@ export default class Blog extends Component {
   }
   render() {
     return (
-      <div className="mt-4 pb-5 mx-auto content-text">
+      <div className="mt-4 pb-5 mx-auto content-text ">
         <Container className="mt-5 pt-5 pb-5 mx-auto">
           {this.props.user.role === "Hospital" && (
             <Button
@@ -43,7 +43,7 @@ export default class Blog extends Component {
             {this.state.posts.map(blogging => (
               <Link key={blogging._id} to={`/blog/${blogging._id}`}>
                 <Card
-                  className="mx-2 mt-5 mb-1"
+                  className="mx-2 mt-5 mb-1 border-0"
                   style={{ width: "22rem" }}
                   key={blogging._id}
                 >
